@@ -58,6 +58,7 @@ namespace FIA.Api.Controllers
 
         // Update UserResource
         [HttpPut]
+        [Route("{id:guid}")]
         public async Task<IActionResult> UpdateUserResource([FromRoute] Guid id, [FromBody] UserResource userResource)
         {
 
