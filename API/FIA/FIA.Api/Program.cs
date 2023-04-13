@@ -13,6 +13,16 @@ builder.Services.AddSwaggerGen();
 // Inject Db Context
 builder.Services.AddDbContext<FiaDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("FiaDbConnectionString")));
 
+// Inject Cors
+builder.Services.AddCors((setup) =>
+{
+    setup.AddPolicy("default", (options) =>
+    {
+        options.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,6 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("default");
 
 app.UseHttpsRedirection();
 

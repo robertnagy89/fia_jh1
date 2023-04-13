@@ -8,7 +8,7 @@ import { UserResource } from '../../models/resource.model';
 })
 export class ResourceService {
 
-  baseUrl = 'https://localhost:7054/api/resource';
+  baseUrl = 'https://localhost:5001/api/userresource';
 
   constructor(private http: HttpClient) { }
 
