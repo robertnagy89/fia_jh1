@@ -10,6 +10,5 @@ namespace FIA.Api.Models
         public decimal Quantity { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
-
     }
 }
