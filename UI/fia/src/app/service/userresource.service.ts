@@ -12,17 +12,24 @@ export class UserResourceService {
 
   constructor(private http: HttpClient) { }
 
-  // Get All Resources
+
   getAllResources(): Observable<UserResource[]> {
     return this.http.get<UserResource[]>(this.baseUrl);
   }
+
 
   addResource(userresource: UserResource): Observable<UserResource> {
     userresource.id = '00000000-0000-0000-0000-000000000000';
     return this.http.post<UserResource>(this.baseUrl, userresource);
   }
 
+
   deleteUserResource(id: string): Observable<UserResource> {
     return this.http.delete<UserResource>(this.baseUrl + '/' + id);
+  }
+
+
+  updateUserResource(userResource: UserResource): Observable<UserResource> {
+    return this.http.put<UserResource>(this.baseUrl + '/' + userResource.id, userResource);
   }
 }

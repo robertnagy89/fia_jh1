@@ -10,7 +10,7 @@ import { UserResourceService } from './service/userresource.service';
 export class AppComponent implements OnInit {
   title = 'fia';
   userresources: UserResource[] = [];
-  userresource: UserResource = {
+  userResource: UserResource = {
     id: '',
     name: '',
     quantity: 0,
@@ -36,20 +36,25 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.userresource);
-    this.userResourceService.addResource(this.userresource)
-      .subscribe(
-        response => {
-          this.getAllResources();
-          this.userresource = {
-            id: '',
-            name: '',
-            quantity: 0,
-            start: "",
-            end: ''
-          };
-        }
-    )
+
+    if (this.userResource.id === '') {
+      this.userResourceService.addResource(this.userResource)
+        .subscribe(
+          response => {
+            this.getAllResources();
+            this.userResource = {
+              id: '',
+              name: '',
+              quantity: 0,
+              start: "",
+              end: ''
+            };
+          }
+        )
+    }
+    else {
+      this.updateUserResource(this.userResource);
+    }
   }
 
   deleteUserResource(id: string) {
@@ -59,5 +64,16 @@ export class AppComponent implements OnInit {
           this.getAllResources();
         }
       );
+  }
+
+  populateForm(userResource: UserResource) {
+    this.userResource = userResource;
+  }
+
+  updateUserResource(userResource: UserResource) {
+    this.userResourceService.updateUserResource(userResource)
+      .subscribe(response => {
+        this.getAllResources();
+    })
   }
 }
