@@ -21,4 +21,8 @@ export class UserResourceService {
     userresource.id = '00000000-0000-0000-0000-000000000000';
     return this.http.post<UserResource>(this.baseUrl, userresource);
   }
+
+  deleteUserResource(id: string): Observable<UserResource> {
+    return this.http.delete<UserResource>(this.baseUrl + '/' + id);
+  }
 }

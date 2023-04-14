@@ -35,7 +35,7 @@
           <span>{{ resource.end }}</span>
         </div>
         <div class="resource-row-action">
-          <div class="deleteButton">Delete
+          <div class="deleteButton" (click)="deleteUserResource(resource.id)">Delete
           </div>
         </div>
       </div>

@@ -51,4 +51,13 @@ export class AppComponent implements OnInit {
         }
     )
   }
+
+  deleteUserResource(id: string) {
+    this.userResourceService.deleteUserResource(id)
+      .subscribe(
+        response => {
+          this.getAllResources();
+        }
+      );
+  }
 }
