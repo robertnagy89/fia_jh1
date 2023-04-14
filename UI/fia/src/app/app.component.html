@@ -4,45 +4,43 @@
   <div class="resource-container">
 
     <div class="resource-form">
-      <form>
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="">Resource Name</label>
-          <input type="text" name="resourceName" />
+          <input type="text" name="resourceName" [(ngModel)]="userResource.name"/>
         </div>
         <div class="form-group">
           <label for="">Quantity</label>
-          <input type="number" name="resourceNumber" />
-        </div>
-        <div class="form-group">
-          <label for="">Description</label>
-          <input type="text" name="resourceDescription" />
+          <input type="number" name="resourceQuantity" [(ngModel)]="userResource.quantity"/>
         </div>
         <div class="form-group form-group-inline">
-          <label for="">Start Time</label>
-          <input type="datetime" name="startTime"/>
-          <label for="">End Time</label>
-          <input type="datetime" name="endTime"/>
+          <label for="">Start</label>
+          <input type="text" name="start" [(ngModel)]="userResource.start"/>
+          <label for="">End</label>
+          <input type="text" name="end" [(ngModel)]="userResource.end"/>
         </div>
         <div class="form-group">
-          <button></button>
+          <button>Save</button>
         </div>
       </form>
     </div>
 
     <div class="resource-grid">
-      <div class="resource-row">
-        <div class="resource-row-details">
-          <span>Mr Example Name here!</span>
-          <span>273</span>
-          <span>12/04/2023  20h10m</span>
-          <span>12/04/2023  21h13m</span>
+
+      <div class="resource-row" *ngFor="let resource of userresources">
+        <div (click)="populateForm(resource)" class="resource-row-details">
+          <span>{{ resource.name }}</span>
+          <span>{{ resource.quantity }}</span>
+          <span>{{ resource.start }}</span>
+          <span>{{ resource.end }}</span>
         </div>
         <div class="resource-row-action">
-          <div class="deleteButton">Delete</div>
+          <div class="deleteButton" (click)="deleteUserResource(resource.id)">Delete
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
 

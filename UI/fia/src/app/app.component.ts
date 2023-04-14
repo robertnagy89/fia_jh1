@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResourceService } from './service/resource.service';
+import { UserResource } from '../models/userresource.model';
+import { UserResourceService } from './service/userresource.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,16 @@ import { ResourceService } from './service/resource.service';
 })
 export class AppComponent implements OnInit {
   title = 'fia';
+  userresources: UserResource[] = [];
+  userResource: UserResource = {
+    id: '',
+    name: '',
+    quantity: 0,
+    start: "",
+    end: ''
+  }
 
-  constructor(private resourceService: ResourceService) {
+  constructor(private userResourceService: UserResourceService) {
 
   }
 
@@ -18,11 +27,53 @@ export class AppComponent implements OnInit {
   }
 
   getAllResources() {
-    this.resourceService.getAllResources()
+    this.userResourceService.getAllResources()
       .subscribe(
         response => {
-          console.log(response);
+          this.userresources = response;
         }
     )
+  }
+
+  onSubmit() {
+
+    if (this.userResource.id === '') {
+      this.userResourceService.addResource(this.userResource)
+        .subscribe(
+          response => {
+            this.getAllResources();
+            this.userResource = {
+              id: '',
+              name: '',
+              quantity: 0,
+              start: "",
+              end: ''
+            };
+          }
+        )
+    }
+    else {
+      this.updateUserResource(this.userResource);
+    }
+  }
+
+  deleteUserResource(id: string) {
+    this.userResourceService.deleteUserResource(id)
+      .subscribe(
+        response => {
+          this.getAllResources();
+        }
+      );
+  }
+
+  populateForm(userResource: UserResource) {
+    this.userResource = userResource;
+  }
+
+  updateUserResource(userResource: UserResource) {
+    this.userResourceService.updateUserResource(userResource)
+      .subscribe(response => {
+        this.getAllResources();
+    })
   }
 }
