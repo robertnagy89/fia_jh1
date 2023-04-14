@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResourceService } from './service/resource.service';
+import { UserResource } from '../models/userresource.model';
+import { UserResourceService } from './service/userresource.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,16 @@ import { ResourceService } from './service/resource.service';
 })
 export class AppComponent implements OnInit {
   title = 'fia';
+  userresources: UserResource[] = [];
+  userresource: UserResource = {
+    id: '',
+    name: '',
+    quantity: 0,
+    start: "",
+    end: ''
+  }
 
-  constructor(private resourceService: ResourceService) {
+  constructor(private userResourceService: UserResourceService) {
 
   }
 
@@ -18,7 +27,17 @@ export class AppComponent implements OnInit {
   }
 
   getAllResources() {
-    this.resourceService.getAllResources()
+    this.userResourceService.getAllResources()
+      .subscribe(
+        response => {
+          this.userresources = response;
+        }
+    )
+  }
+
+  onSubmit() {
+    console.log(this.userresource);
+    this.userResourceService.addResource(this.userresource)
       .subscribe(
         response => {
           console.log(response);
