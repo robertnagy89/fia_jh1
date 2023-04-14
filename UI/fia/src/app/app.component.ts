@@ -40,7 +40,14 @@ export class AppComponent implements OnInit {
     this.userResourceService.addResource(this.userresource)
       .subscribe(
         response => {
-          console.log(response);
+          this.getAllResources();
+          this.userresource = {
+            id: '',
+            name: '',
+            quantity: 0,
+            start: "",
+            end: ''
+          };
         }
     )
   }
