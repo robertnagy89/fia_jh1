@@ -2,6 +2,8 @@
 using FIA.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System;
 
 namespace FIA.Api.Controllers
 {
@@ -59,7 +61,7 @@ namespace FIA.Api.Controllers
         // Update UserResource
         [HttpPut]
         [Route("{id:guid}")]
-        public async Task<IActionResult> UpdateUserResource([FromRoute] Guid id, [FromBody] UserResource userResource)
+        public async Task<IActionResult> UpdateUserResource([FromRoute]Guid id, [FromBody] UserResource userResource)
         {
 
             var existingUserResource = await _context.UserResource.FirstOrDefaultAsync(x => x.Id == id);
