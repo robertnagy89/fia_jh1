@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserResourceComponent } from './user-resource.component';
+import { UserResourceComponent } from './userresource.component';
 
 describe('UserResourceComponent', () => {
   let component: UserResourceComponent;

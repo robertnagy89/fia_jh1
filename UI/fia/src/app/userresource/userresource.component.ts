@@ -3,15 +3,15 @@ import { UserResource } from '../../models/userresource.model';
 import { UserResourceService } from '../services/userresource.service';
 
 @Component({
-  selector: 'app-user-resource',
-  templateUrl: './user-resource.component.html',
-  styleUrls: ['./user-resource.component.css']
+  selector: 'app-userresource',
+  templateUrl: './userresource.component.html',
+  styleUrls: ['./userresource.component.css']
 })
 export class UserResourceComponent implements OnInit {
-  title = 'userResource';
+  title = 'userresource';
   userresources: UserResource[] = [];
   userResource: UserResource = {
-    id: '',
+    id: '',       
     name: '',
     quantity: 0,
     start: "",
