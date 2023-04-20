@@ -7,6 +7,9 @@ import { User } from '../../models/user';
   providedIn: 'root'
 })
 export class ChatService {
+  myName: string = '';
+
+
   constructor(private httpClient: HttpClient) { }
 
   registerUser(user: User) {
