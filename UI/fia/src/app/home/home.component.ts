@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   userForm: FormGroup = new FormGroup({});
   submitted = false;
   apiErrorMessages: string[] = [];
+  openChat = false;
 
   constructor(private formBuilder: FormBuilder, private chatService: ChatService) { }
 
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
     if (this.userForm.valid) {
       this.chatService.registerUser(this.userForm.value).subscribe({
         next: () => {
-          console.log('open chat');
+          this.openChat = true;
         },
         error: error => {
           if (typeof (error.error) !== 'object') {
