@@ -1,6 +1,8 @@
-.container{
-    padding-top:60px;
-    padding-bottom:5px;
-    justify-items:center;
-    text-align:center; 
+.container {
+  position: relative;
+  height: 100vh; /* Adjust to the height of your desktop application */
+}
+
+.router-outlet{
+    display:flex;
 }
