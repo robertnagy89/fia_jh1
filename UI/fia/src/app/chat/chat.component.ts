@@ -10,10 +10,19 @@ import { ChatService } from '../services/chat.service';
 
 export class ChatComponent {
   @Output() closeChatEmitter = new EventEmitter();
+  showChatFlag: boolean = true; // Add a boolean flag for component visibility
 
   constructor(public chatService: ChatService) { }
 
   backToHome() {
     this.closeChatEmitter.emit();
+  }
+
+  isChatVisible(): boolean { // Use a different name for the function
+    return this.chatService.showChat;
+  }
+
+  toggleChat(): void {
+    this.showChatFlag = !this.showChatFlag; // Update the value of the boolean flag
   }
 }
