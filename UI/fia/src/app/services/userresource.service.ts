@@ -9,6 +9,8 @@ import { UserResource } from '../../models/userresource.model';
 export class UserResourceService {
 
   baseUrl = 'https://localhost:5001/api/userresource';
+  showResources: boolean = false;
+    resourceService: any;
 
   constructor(private http: HttpClient) { }
 
@@ -31,5 +33,13 @@ export class UserResourceService {
 
   updateUserResource(userResource: UserResource): Observable<UserResource> {
     return this.http.put<UserResource>(this.baseUrl + '/' + userResource.id, userResource);
+  }
+
+  isResourcesVisible(): boolean { // Use a different name for the function
+    return this.resourceService.showResources;
+  }
+
+  toggleChat(): void {
+    this.showResources = !this.showResources; // Update the value of the boolean flag
   }
 }
