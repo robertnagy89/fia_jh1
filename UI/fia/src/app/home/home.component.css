@@ -1,1 +1,82 @@
+/* Example CSS styles for the landing page */
+.greeting {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+  .greeting h2 {
+    font-size: 36px;
+    color: #007bff; /* Update text color */
+  }
+
+  .greeting p {
+    font-size: 18px;
+    color: #333; /* Update text color */
+  }
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa; /* Update background color */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Update box shadow */
+}
+
+  .form-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Update text color */
+  }
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+.nameChooser {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #007bff; /* Update border color */
+  font-size: 18px;
+  color: #333; /* Update text color */
+}
+
+.error-message {
+  color: #dc3545; /* Update error message color */
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.api-error-messages {
+  margin-bottom: 20px;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #007bff; /* Update button background color */
+  color: #fff; /* Update button text color */
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out; /* Add transition effect */
+}
+
+.submit-button:hover {
+  background-color: #0056b3; /* Update button background color on hover */
+}
+
+.is-invalid {
+  border-color: #dc3545; /* Update border color for invalid input */
+}
+
+.api-error-messages {
+  color: #dc3545; /* Update error message color */
+  font-size: 14px;
+  margin-top: 5px;
+}
