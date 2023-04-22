@@ -1,0 +1,25 @@
+
+<div class="chat-content" *ngIf="isChatVisible()">
+  <div class="flex-container">
+    <div class="users-card">
+      <h2>Active Users</h2>
+      <div class="users">
+        <div class="card-body">
+          <div class="col">
+            <button type="button" class="user-button">{{ chatService.myName }}</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="col">
+            <button type="button" class="user-button">User2</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="messages-card">
+      <span class="message-user">User1</span>
+      <span class="message-text">Some message goes here!</span>
+    </div>
+  </div>
+</div>

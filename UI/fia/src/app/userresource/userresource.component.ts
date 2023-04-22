@@ -17,6 +17,7 @@ export class UserResourceComponent implements OnInit {
     start: "",
     end: ''
   }
+    showResourceFlag: any;
 
   constructor(private userResourceService: UserResourceService) {
 
@@ -75,5 +76,13 @@ export class UserResourceComponent implements OnInit {
       .subscribe(response => {
         this.getAllResources();
       })
+  }
+
+  isResourcesVisible(): boolean { // Use a different name for the function
+    return this.userResourceService.showResources;
+  }
+
+  toggleChat(): void {
+    this.showResourceFlag = !this.showResourceFlag; // Update the value of the boolean flag
   }
 }

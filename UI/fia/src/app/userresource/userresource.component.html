@@ -1,5 +1,5 @@
-<div class="container">
-  <h1>Angular + ASP.Net Core 6.0 CRUD</h1>
+<div class="container" *ngIf="isResourcesVisible()">
+  <h1 class="title">Angular + ASP.Net Core 6.0 CRUD</h1>
 
   <div class="resource-container">
 
@@ -7,20 +7,20 @@
       <form #form="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="">Resource Name</label>
-          <input type="text" name="resourceName" [(ngModel)]="userResource.name" />
+          <input type="text" name="resourceName" [(ngModel)]="userResource.name" class="form-input" />
         </div>
         <div class="form-group">
           <label for="">Quantity</label>
-          <input type="number" name="resourceQuantity" [(ngModel)]="userResource.quantity" />
+          <input type="number" name="resourceQuantity" [(ngModel)]="userResource.quantity" class="form-input" />
         </div>
         <div class="form-group form-group-inline">
           <label for="">Start</label>
-          <input type="text" name="start" [(ngModel)]="userResource.start" />
+          <input type="text" name="start" [(ngModel)]="userResource.start" class="form-input" />
           <label for="">End</label>
-          <input type="text" name="end" [(ngModel)]="userResource.end" />
+          <input type="text" name="end" [(ngModel)]="userResource.end" class="form-input" />
         </div>
         <div class="form-group">
-          <button>Save</button>
+          <button class="form-button">Save</button>
         </div>
       </form>
     </div>
@@ -44,4 +44,3 @@
     </div>
   </div>
 </div>
-

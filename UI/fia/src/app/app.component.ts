@@ -9,5 +9,4 @@ import { UserResourceComponent } from './userresource/userresource.component';
 })
 export class AppComponent {
   title = 'fia';
-
 }
