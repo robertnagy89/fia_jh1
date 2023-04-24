@@ -15,13 +15,13 @@ Resources
 
 Date		Task									Hours
 2023-04-17	Landing page design							8
-2023-04-18	UserResource component development			6
-2023-04-19	App component enhancement					7
-2023-04-19	User resource component development			6
-2023-04-20	Footer design and implementation			3
-2023-04-20	Testing and bug fixing						4
-2023-04-21	Documentation and report generation			2
-2023-04-21	Meeting with team for project review		2
+2023-04-18	UserResource component development					6
+2023-04-19	App component enhancement						7
+2023-04-19	User resource component development					6
+2023-04-20	Footer design and implementation					3
+2023-04-20	Testing and bug fixing							4
+2023-04-21	Documentation and report generation					2
+2023-04-21	Meeting with team for project review					2
 Total		38
 
 
