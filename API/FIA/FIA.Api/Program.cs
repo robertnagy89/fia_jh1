@@ -24,11 +24,14 @@ builder.Services.AddDbContext<FiaDbContext>(options => options.UseSqlServer(buil
 // Inject Cors
 builder.Services.AddCors((setup) =>
 {
-    setup.AddPolicy("default", (options) =>
-    {
-        options.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+        setup.AddPolicy("default", options =>
+        {
+            options.WithOrigins("http://localhost:4200") // Update the allowed origin here
+                   .AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowCredentials();
+        });
     });
-});
 
 
 var app = builder.Build();
