@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { UserResourceComponent } from './userresource/userresource.component';
+import { Component } from '@angular/core';
 
 
 @Component({
