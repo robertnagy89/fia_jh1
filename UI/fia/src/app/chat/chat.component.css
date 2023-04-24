@@ -1,31 +1,28 @@
 /* Example CSS styles for the chat component */
 .chat-content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f8f9fa; /* Update background color */
+  flex-direction: row; /* Update flex-direction to row for side-by-side layout */
+  align-items: flex-start; /* Update alignment to flex-start */
+  justify-content: flex-start; /* Update alignment to flex-start */
   padding: 20px;
 }
 
 .flex-container {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column; /* Update flex-direction to column for active users to be laid out in a column */
+  margin-right: 20px; /* Add margin-right for spacing between active users and app messages */
 }
 
 .users-card {
-  flex: 1;
-  margin-right: 20px;
-  background-color: #fff; /* Update background color */
+  background-color: #fff;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow for depth effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
   .users-card h2 {
     font-size: 24px;
     font-weight: bold;
-    color: #333; /* Update text color */
+    color: #333;
   }
 
 .users {
@@ -34,41 +31,30 @@
 
 .card-body {
   display: flex;
+  flex-direction: column; /* Update flex-direction to column for active users to be laid out in a column */
 }
 
 .user-button {
   border: none;
-  background-color: #007bff; /* Update background color */
-  color: #fff; /* Update text color */
+  background-color: #007bff;
+  color: #fff;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   padding: 10px 20px;
-  margin-right: 10px;
+  margin-bottom: 10px; /* Add margin-bottom for spacing between active users buttons */
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
   .user-button:hover {
-    background-color: #0056b3; /* Update hover background color */
-    transform: scale(1.05); /* Add scaling effect on hover */
+    background-color: #0056b3;
+    transform: scale(1.05);
   }
 
 .messages-card {
-  flex: 2;
-  background-color: #f8f9fa; /* Update background color */
+  flex-grow: 1; /* Update flex-grow to 1 to allow app messages to take up remaining space */
+  background-color: #f8f9fa;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow for depth effect */
-}
-
-.message-user {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333; /* Update text color */
-}
-
-.message-text {
-  margin-top: 5px;
-  font-size: 16px;
-  color: #555; /* Update text color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
