@@ -1,5 +1,11 @@
 <!-- messages.component.html -->
-<div class="messages-container">
+<form (ngSubmit)="sendMessage()" #messageForm="ngForm" class="message-form">
+  <input [(ngModel)]="newMessage" name="newMessage" class="message-input" placeholder="Type your message..." />
+  <button type="submit" class="send-button">Send</button>
+</form>
+
+
+<div class="messagesContainer">
   <div *ngFor="let message of messages" class="message">
     <div class="message-avatar">
       <img src="{{ message.avatar }}" alt="{{ message.sender }}" />
