@@ -8,14 +8,14 @@
   justify-content: space-between; /* Position components with equal spacing between them */
 }
 
-app-userresource {
-  width: 23%; /* Set width of userresource component to 23% of the container */
-  position: fixed; /* Fix the position of userresource component */
-  top: 0; /* Position userresource component at the top */
-  left: 0; /* Position userresource component at the left */
+app-chat {
+  width: 23%; /* Set width of app-chat component to 23% of the container */
+  position: fixed; /* Fix the position of app-chat component */
+  top: 60px; /* Position app-chat component at the top */
+  left: 0; /* Position app-chat component at the left */
 }
 
 app-home {
   flex: 1; /* Allow home component to expand and fill remaining space */
-  margin-left: 23%; /* Add margin to the left of home component to account for userresource width */
+  margin-left: 23%; /* Add margin to the left of home component to account for app-chat width */
 }
