@@ -25,5 +25,13 @@ namespace FIA.Api.Hubs
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, "TestChat");
             await base.OnDisconnectedAsync(exception);
         }
+
+        public async Task AddUserConnectionId(string name)
+        {
+            _chatService.AddUserConnectionId(name, Context.ConnectionId);
+            var onlineUsers = _chatService.GetOnlineUsers();
+            // Trigger client side Angular function with matching group
+            await Clients.Groups("TestChat").SendAsync("OnlineUsers", onlineUsers);
+        }
     }
 }

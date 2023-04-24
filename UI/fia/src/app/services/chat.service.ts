@@ -11,6 +11,7 @@ export class ChatService {
   myName: string = '';
   showChat: boolean = false;
   private chatConnection?: HubConnection;
+  onlineUsers: string[] = [];
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,12 +25,23 @@ export class ChatService {
     console.log(this.chatConnection);
     this.chatConnection.start().catch(err => {
       console.log(err);
-    })
+    });
+    this.chatConnection.on('UserConnected', () => {
+      this.addUserConnectionId();
+    });
+    this.chatConnection.on('OnlineUsers', (onlineUsers) => {
+      this.onlineUsers = [...onlineUsers];
+    });
   }
 
   stopChatConnection() {
     this.chatConnection?.stop().catch(err => {
       console.log(err);
     })
+  }
+
+  async addUserConnectionId() {
+    return this.chatConnection?.invoke("AddUserConnectionId", this.myName)
+      .catch(err => console.log(err));
   }
 }
