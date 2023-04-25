@@ -6,7 +6,9 @@
       <div class="users">
         <div class="card-body" *ngFor="let user of chatService.onlineUsers">
           <div class="col">
-            <button type="button" class="user-button">{{ user }}</button>
+            <button type="button"
+                    [ngClass]="{'currentuser-button': user === chatService.myName, 'user-button': user !== chatService.myName}">
+            {{ user }}</button>
           </div>
         </div>
       </div>

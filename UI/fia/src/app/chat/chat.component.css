@@ -47,6 +47,19 @@
   transition: background-color 0.3s ease;
 }
 
+.currentuser-button {
+  border: none;
+  background-color: crimson;  
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin-bottom: 10px; /* Add margin-bottom for spacing between active users buttons */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
   .user-button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
