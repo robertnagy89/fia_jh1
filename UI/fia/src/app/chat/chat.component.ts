@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ChatService } from '../services/chat.service';
 })
 
 
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
   @Output() closeChatEmitter = new EventEmitter();
   showChatFlag: boolean = true; // Add a boolean flag for component visibility
 
@@ -16,6 +16,10 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.chatService.createChatConnection();
+  }
+
+  ngOnDestroy() {
+    this.chatService.stopChatConnection();
   }
 
   backToHome() {
