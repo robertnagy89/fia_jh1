@@ -41,6 +41,7 @@ export class ChatService {
   }
 
   async addUserConnectionId() {
+
     return this.chatConnection?.invoke("AddUserConnectionId", this.myName)
       .catch(err => console.log(err));
   }
