@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { environment } from '../../environments/environment';
+import { Message } from '../../models/message';
 import { User } from '../../models/user';
 
 @Injectable({
@@ -9,9 +10,11 @@ import { User } from '../../models/user';
 })
 export class ChatService {
   myName: string = '';
+  myAvatar: string = 'your_avatar';
   showChat: boolean = false;
   private chatConnection?: HubConnection;
   onlineUsers: string[] = [];
+  messages: Message[] = [];
 
   constructor(private httpClient: HttpClient) { }
 
@@ -32,6 +35,9 @@ export class ChatService {
     this.chatConnection.on('OnlineUsers', (onlineUsers) => {
       this.onlineUsers = [...onlineUsers];
     });
+    this.chatConnection.on("NewMessage", (newMessage: Message) => {
+      this.messages = [...this.messages, newMessage];
+    })
   }
 
   stopChatConnection() {
@@ -45,4 +51,17 @@ export class ChatService {
     return this.chatConnection?.invoke("AddUserConnectionId", this.myName)
       .catch(err => console.log(err));
   }
+
+  async sendMessage(content: string) {
+    const message: Message = {
+      sender: this.myName,
+      text: content,
+      timestamp: new Date(),
+      avatar: this.myAvatar
+    }
+
+    return this.chatConnection?.invoke('ReceiveUserMessage', message)
+      .catch(err => console.log(err));
+  }
+
 }
