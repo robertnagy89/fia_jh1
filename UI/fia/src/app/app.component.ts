@@ -10,6 +10,7 @@ import { ChatService } from './services/chat.service';
 })
 export class AppComponent {
   constructor(private authService: AuthService, private chatService: ChatService) { }
+  title = 'fia';
 
   // Use the isLoggedIn() method from the AuthService to check login status
   isLoggedIn(): boolean {
