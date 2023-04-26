@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Threading.Tasks;
+using FIA.Api.Models;
 
 namespace FIA.Api.Hubs
 {
@@ -34,6 +35,11 @@ namespace FIA.Api.Hubs
         {
             _chatService.AddUserConnectionId(name, Context.ConnectionId);
             await DisplayOnlineUsers();
+        }
+
+        public async Task ReceiveUserMessage(Message message)
+        {
+            await Clients.Group("TestChat").SendAsync("NewMessage", message);
         }
 
         private async Task DisplayOnlineUsers()
