@@ -1,0 +1,19 @@
+<!-- messages.component.html -->
+<form #messageForm="ngForm" class="message-form">
+  <input [(ngModel)]="content" name="content" class="message-input" placeholder="Type your message..." />
+  <button [disabled]="!messageForm.valid" (click)="sendMessage()" type="submit" class="send-button">Send</button>
+</form>
+
+
+<div class="messagesContainer">
+  <div *ngFor="let message of messages" class="message">
+    <div class="message-avatar">
+      <img src="{{ message.avatar }}" alt="{{ message.sender }}" />
+    </div>
+    <div class="message-content">
+      <div class="message-sender">{{ message.sender }}</div>
+      <div class="message-text">{{ message.text }}</div>
+      <div class="message-timestamp">{{ message.timestamp | date: 'MMM d, h:mm a' }}</div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Threading.Tasks;
+using FIA.Api.Models;
 
 namespace FIA.Api.Hubs
 {
@@ -23,7 +24,29 @@ namespace FIA.Api.Hubs
         public override async Task OnDisconnectedAsync(Exception exception)
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, "TestChat");
+            var user = _chatService.GetUserByConnectionId(Context.ConnectionId);
+            _chatService.RemoveUserFromList(user);
+            await DisplayOnlineUsers();
+
             await base.OnDisconnectedAsync(exception);
+        }
+
+        public async Task AddUserConnectionId(string name)
+        {
+            _chatService.AddUserConnectionId(name, Context.ConnectionId);
+            await DisplayOnlineUsers();
+        }
+
+        public async Task ReceiveUserMessage(Message message)
+        {
+            await Clients.Group("TestChat").SendAsync("NewMessage", message);
+        }
+
+        private async Task DisplayOnlineUsers()
+        {
+            var onlineUsers = _chatService.GetOnlineUsers();
+            // Trigger client side Angular function with matching group
+            await Clients.Groups("TestChat").SendAsync("OnlineUsers", onlineUsers);
         }
     }
 }

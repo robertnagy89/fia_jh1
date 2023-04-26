@@ -4,22 +4,18 @@
     <div class="users-card">
       <h2>Active Users</h2>
       <div class="users">
-        <div class="card-body">
+        <div class="card-body" *ngFor="let user of chatService.onlineUsers">
           <div class="col">
-            <button type="button" class="user-button">{{ chatService.myName }}</button>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="col">
-            <button type="button" class="user-button">User2</button>
+            <button type="button"
+                    [ngClass]="{'currentuser-button': user === chatService.myName, 'user-button': user !== chatService.myName}"
+                    [disabled]="user === chatService.myName">
+            {{ user }}</button>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="messages-card">
-      <span class="message-user">User1</span>
-      <span class="message-text">Some message goes here!</span>
-    </div>
   </div>
+
+  <app-messages (contentEmitter)="sendMessage($event)" [messages]="chatService.messages"></app-messages>
+
 </div>
