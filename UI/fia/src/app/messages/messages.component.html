@@ -1,7 +1,7 @@
 <!-- messages.component.html -->
-<form (ngSubmit)="sendMessage()" #messageForm="ngForm" class="message-form">
-  <input [(ngModel)]="newMessage" name="newMessage" class="message-input" placeholder="Type your message..." />
-  <button type="submit" class="send-button">Send</button>
+<form #messageForm="ngForm" class="message-form">
+  <input [(ngModel)]="content" name="content" class="message-input" placeholder="Type your message..." />
+  <button [disabled]="!messageForm.valid" (click)="sendMessage()" type="submit" class="send-button">Send</button>
 </form>
 
 

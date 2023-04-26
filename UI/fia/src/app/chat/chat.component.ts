@@ -10,7 +10,7 @@ import { ChatService } from '../services/chat.service';
 
 export class ChatComponent implements OnInit, OnDestroy {
   @Output() closeChatEmitter = new EventEmitter();
-  showChatFlag: boolean = true; // Add a boolean flag for component visibility
+  showChatFlag: boolean = false; // Add a boolean flag for component visibility
 
   constructor(public chatService: ChatService) { }
 
@@ -32,5 +32,9 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   toggleChat(): void {
     this.showChatFlag = !this.showChatFlag; // Update the value of the boolean flag
+  }
+
+  sendMessage(content: string) {
+    this.chatService.sendMessage(content);
   }
 }
