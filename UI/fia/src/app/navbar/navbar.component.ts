@@ -12,6 +12,7 @@ export class NavbarComponent {
   constructor(private chatService: ChatService, private userResourceService: UserResourceService) { }
 
   toggleChat(): void {
+    console.log("chat toggled");
     this.chatService.showChat = !this.chatService.showChat;
   }
 

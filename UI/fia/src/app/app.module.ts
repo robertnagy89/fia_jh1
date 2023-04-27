@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ChatComponent } from './chat/chat.component';
 import { MessagesComponent } from './messages/messages.component';
+import { MessageInputComponent } from './message-input/message-input.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MessagesComponent } from './messages/messages.component';
     FooterComponent,
     HomeComponent,
     ChatComponent,
-    MessagesComponent
+    MessagesComponent,
+    MessageInputComponent
   ],
   imports: [
     BrowserModule,

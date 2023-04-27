@@ -1,73 +1,50 @@
-/* Example CSS styles for the chat component */
-.chat-content {
+.chat-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
   display: flex;
-  flex-direction: row; /* Update flex-direction to row for side-by-side layout */
-  align-items: flex-start; /* Update alignment to flex-start */
-  justify-content: flex-start; /* Update alignment to flex-start */
-  padding: 20px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: column; /* Update flex-direction to column for active users to be laid out in a column */
-  margin-right: 20px; /* Add margin-right for spacing between active users and app messages */
+.greeting {
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-.users-card {
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-  .users-card h2 {
-    font-size: 24px;
+  .greeting h2 {
+    font-size: 2.5rem;
     font-weight: bold;
     color: #333;
   }
 
-.users {
-  margin-top: 10px;
+.messages-container {
+  height: 400px;
+  overflow-y: scroll;
+  margin-bottom: 30px;
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column; /* Update flex-direction to column for active users to be laid out in a column */
+.form-container {
+  width: 100%;
 }
 
-.user-button {
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px 20px;
-  margin-bottom: 10px; /* Add margin-bottom for spacing between active users buttons */
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.currentuser-button {
-  border: none;
-  background-color: crimson;  
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px 20px;
-  margin-bottom: 10px; /* Add margin-bottom for spacing between active users buttons */
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-  .user-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+@media screen and (min-width: 768px) {
+  .chat-container {
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
   }
 
-.messages-card {
-  flex-grow: 1; /* Update flex-grow to 1 to allow app messages to take up remaining space */
-  background-color: #f8f9fa;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  .greeting {
+    grid-column: span 2;
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .messages-container {
+    height: auto;
+    overflow-y: visible;
+    margin-bottom: 0;
+  }
 }
