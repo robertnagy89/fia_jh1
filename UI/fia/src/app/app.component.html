@@ -1,13 +1,11 @@
-
-<app-navbar></app-navbar>
-
 <div class="main-container">
-    <div class="message-list-container">
+    <app-navbar></app-navbar>
+
 
         <app-home *ngIf="!isLoggedIn()"></app-home> <!-- Render app-home if user is not logged in -->
 
         <app-chat *ngIf="isLoggedIn()"></app-chat> <!-- Render app-chat and app-userresource if user is logged in -->
-    </div>
-</div>
 
-<app-footer></app-footer>
+
+    <app-footer></app-footer>
+</div>

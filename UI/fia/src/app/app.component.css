@@ -1,26 +1,11 @@
-/* Main container styles */
+/* App layout */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+}
+
 .main-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-/* Message list container styles */
-.message-list-container {
-  width: 80%;
-  max-width: 1200px;
-  height: 100%;
-  overflow-y: auto;
-}
-
-/* Home and chat component styles */
-app-home,
-app-chat {
-  position: fixed;
-  top: 0px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

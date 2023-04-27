@@ -1,29 +1,32 @@
-<div class="landing-container">
-    <div class="greeting">
+<div class="home-container">
+    <div class="greeting-card">
         <h2>Welcome to Fun It App!</h2>
         <p>Join our community and start having fun!</p>
     </div>
 
-    <form [formGroup]="userForm" (ngSubmit)="submitForm()" autocomplete="off">
-        <div class="form-row">
-            <label for="name">Choose a Name:</label>
-            <input formControlName="name" type="text" class="nameChooser" placeholder="Your Name" [class.is-invalid]="submitted && userForm.get('name')?.errors" />
-            <span class="error-message" *ngIf="submitted && userForm.get('name')?.hasError('required')">
-                Please choose a name between 3 and 20 characters in length!
-            </span>
-            <span class="error-message" *ngIf="submitted && userForm.get('name')?.hasError('maxlength') || userForm.get('name')?.hasError('minlength')">
-                Your name must be between 3 and 20 characters in length!
-            </span>
-        </div>
+    <div class="form-card">
+        <form [formGroup]="userForm" (ngSubmit)="submitForm()" autocomplete="off">
+            <div class="form-row">
+                <label for="name">Choose a Name:</label>
+                <input formControlName="name" type="text" class="nameChooser" placeholder="Your Name" [class.is-invalid]="submitted && userForm.get('name')?.errors" />
+                <span class="error-message" *ngIf="submitted && userForm.get('name')?.hasError('required')">
+                    Please choose a name between 3 and 20 characters in length!
+                </span>
+                <span class="error-message" *ngIf="submitted && userForm.get('name')?.hasError('maxlength') || userForm.get('name')?.hasError('minlength')">
+                    Your name must be between 3 and 20 characters in length!
+                </span>
+            </div>
 
-        <div class="api-error-messages" *ngIf="apiErrorMessages.length > 0">
-            <ul>
-                <li *ngFor="let error of apiErrorMessages"> {{ error }}</li>
-            </ul>
-        </div>
+            <div class="api-error-messages" *ngIf="apiErrorMessages.length > 0">
+                <ul>
+                    <li *ngFor="let error of apiErrorMessages"> {{ error }}</li>
+                </ul>
+            </div>
 
-        <div class="form-row">
-            <button class="submit-button" type="submit">Start Chatting</button>
-        </div>
-    </form>
+
+            <div class="form-row">
+                <button class="submit-button" type="submit">Start Chatting</button>
+            </div>
+        </form>
+    </div>
 </div>

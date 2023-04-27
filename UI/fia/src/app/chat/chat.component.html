@@ -1,9 +1,5 @@
 
 <div class="chat-container" *ngIf="isChatVisible()">
-    <div class="greeting">
-        <h2>Welcome to Fun It App, {{ chatService.myName }}!</h2>
-    </div>
-
     <div class="messages-container">
         <app-messages [messages]="chatService.messages"></app-messages>
     </div>
