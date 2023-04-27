@@ -1,10 +1,4 @@
 <!-- messages.component.html -->
-<form #messageForm="ngForm" class="message-form">
-  <input [(ngModel)]="content" name="content" class="message-input" placeholder="Type your message..." />
-  <button [disabled]="!messageForm.valid" (click)="sendMessage()" type="submit" class="send-button">Send</button>
-</form>
-
-
 <div class="messagesContainer">
   <div *ngFor="let message of messages" class="message">
     <div class="message-avatar">
