@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+:root {
+  --primary-color: #a9eee6;
+  --secondary-color: #fefaec;
+  --accent-color: #f38181;
+  --text-color: #625772;
 }
