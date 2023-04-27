@@ -1,5 +1,5 @@
 // messages.component.ts
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Message } from '../../models/message';
 import { ChatService } from '../services/chat.service';
 
