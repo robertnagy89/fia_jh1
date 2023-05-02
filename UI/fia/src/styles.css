@@ -1,7 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+/* Global Styles */
+
+/* Color Variables */
+:root {
+  --primary-color: #313A43;
+  --secondary-color: #74818C;
+  --text-color: #ffffff;
+  --accent-color: #B9C0C5;
+  --accent-color-hover: #FFD700;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+}
+
+/* Fonts */
+body {
+  font-family: Arial, sans-serif;
 }

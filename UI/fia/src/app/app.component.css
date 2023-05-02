@@ -1,21 +1,5 @@
-.container {
-  max-width: 100%; /* Make the container width scale to current resolution */
-  padding: 0 20px; /* Add some padding to the container */
+/* Layout */
+.main-container {
+  min-height: calc(100vh - 120px);
 }
 
-.app-container {
-  display: flex; /* Use flexbox for layout */
-  justify-content: space-between; /* Position components with equal spacing between them */
-}
-
-app-chat {
-  width: 23%; /* Set width of app-chat component to 23% of the container */
-  position: fixed; /* Fix the position of app-chat component */
-  top: 60px; /* Position app-chat component at the top */
-  left: 0; /* Position app-chat component at the left */
-}
-
-app-home {
-  flex: 1; /* Allow home component to expand and fill remaining space */
-  margin-left: 23%; /* Add margin to the left of home component to account for app-chat width */
-}

@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { UserResourceComponent } from './userresource/userresource.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
+import { LandingComponent } from './landing/landing.component';
 import { ChatComponent } from './chat/chat.component';
 import { MessagesComponent } from './messages/messages.component';
+import { MessageInputComponent } from './message-input/message-input.component';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,10 @@ import { MessagesComponent } from './messages/messages.component';
     UserResourceComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent,
+    LandingComponent,
     ChatComponent,
-    MessagesComponent
+    MessagesComponent,
+    MessageInputComponent
   ],
   imports: [
     BrowserModule,

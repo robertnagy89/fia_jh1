@@ -1,0 +1,49 @@
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 70px;
+  left: 23%;
+  right: 0;
+  background-color: var(--primary-color);
+}
+
+.message-form {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.send-button {
+  background-color: var(--accent-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+  .send-button:hover {
+    background-color: var(--accent-color-hover);
+  }
+
+  .send-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

@@ -10,7 +10,7 @@ import { User } from '../../models/user';
 })
 export class ChatService {
   myName: string = '';
-  myAvatar: string = 'your_avatar';
+  myAvatar: string = 'cavia_wizard1';
   showChat: boolean = false;
   private chatConnection?: HubConnection;
   onlineUsers: string[] = [];
@@ -54,7 +54,8 @@ export class ChatService {
 
   async sendMessage(content: string) {
     const message: Message = {
-      sender: this.myName,
+      from: this.myName,
+      to: "",
       text: content,
       timestamp: new Date(),
       avatar: this.myAvatar

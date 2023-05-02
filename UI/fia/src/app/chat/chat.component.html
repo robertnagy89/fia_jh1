@@ -1,21 +1,17 @@
-
-<div class="chat-content" *ngIf="isChatVisible()">
-  <div class="flex-container">
-    <div class="users-card">
-      <h2>Active Users</h2>
-      <div class="users">
-        <div class="card-body" *ngFor="let user of chatService.onlineUsers">
-          <div class="col">
-            <button type="button"
-                    [ngClass]="{'currentuser-button': user === chatService.myName, 'user-button': user !== chatService.myName}"
-                    [disabled]="user === chatService.myName">
-            {{ user }}</button>
-          </div>
+<div class="chat-container" *ngIf="isChatVisible()">
+    <div class="left-sidebar" [class.hovered]="hovered" (mouseleave)="onMouseLeave()">
+        <div class="users">
+            <div class="user" *ngFor="let user of chatService.onlineUsers">
+                <div class="avatar"></div>
+                <div class="name">{{ user }}</div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <app-messages (contentEmitter)="sendMessage($event)" [messages]="chatService.messages"></app-messages>
-
+    <div class="messages-container">
+            <app-messages [messages]="chatService.messages"></app-messages>
+        <div class="form-container">
+            <app-message-input (contentEmitter)="sendMessage($event)"></app-message-input>
+        </div>
+    </div>
 </div>

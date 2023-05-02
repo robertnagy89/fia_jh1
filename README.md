@@ -1,14 +1,82 @@
 # fia_jh1
 
 ##FunItApp
-Angular with .Net 6.0
+User experience:
 
-	1. Launch the back-end functionality by running /fia_jh1/API/FIA/FIA.Api/Program.cs directly.
+	1. Launch the back-end functionality by running /API/FIA/FIA.Api/Program.cs directly.
 	2. Navigate to the fia_jh1/UI/fia directory in PowerShell or terminal.
-	3. Type ng serve -o to open the front-end UI.
-	4. To test the end-points using Swagger and access MSSQL, double click on ./fia_jh1/API/FIA.API.sln and launch.
+	3. Type ng serve -o, the browser should open to our landing-component.
+
+Back-end endpoint checking via swagger:
+	1. Open solution located under /API/FIA/FIA.Api/Fia.Sln
+	2. Launch application, the browser should open to swagger containing our current endpoints.
+
+###Dev Notes
+	SignalR->
+		Angular chatservice sends signal to backend chathub which sends out the signal to trigger current users client to refresh its messages, and/or online users.
+		!! Naming is case sensitive, server side call needs exact match with function name to trigger on client-side.
+		++ Clients are identified by their own browser connection id and sorted on back-end
+		++ Does not result in needless checks to server
 
 #################
+FunItApp Log2 - Separation of concern
+
+Date Task Hours
+2023-04-22 Refactor: Separate css add color variables, and other details at component level 4
+2023-04-22 Refactor: Separate css add global overall styled cards and buttons 3
+2023-04-23 Refactor: Rename and update chat into active-users 5
+2023-04-23 Refactor: Separate chat into message-input messages 6
+2023-04-24 Feat: Add receivemessage method 5
+2023-04-24 Feat: Sync user messages between clients 6
+2023-04-25 Feat: Add user messages 3
+2023-04-25 Feat: Add messages window 4
+2023-04-26 Feat: Sync online users between clients 5
+2023-04-26 Feat: Add online users to active users tab 4
+2023-04-27 Documentation and report generation 2
+Total 47
+
+Front-end Development:
+Refactored CSS to separate color variables and other details at the component level for improved organization and maintainability.
+Created global overall styled cards and buttons for consistency throughout the app.
+Renamed and updated chat component to active-users for more accurate representation of functionality.
+Separated chat component into message-input and messages components for improved separation of concerns.
+Implemented receivemessage method to handle incoming messages from other clients.
+Synced user messages between clients for real-time messaging functionality.
+Added user messages for improved communication and collaboration.
+Implemented messages window to display and manage user messages.
+Synced online users between clients for real-time status updates.
+Added online users to the active users tab for improved collaboration and networking.
+
+Back-end Development:
+Utilized ASP.NET Core 6.0 and SignalR for back-end development.
+Implemented SignalR hub for real-time messaging functionality.
+Implemented database operations for storing and retrieving user messages.
+
+Overall Design and User Experience:
+Improved organization and maintainability of CSS through refactoring and separation of concerns.
+Created global overall styled cards and buttons for consistency throughout the app.
+Renamed and updated chat component to active-users for improved accuracy.
+Separated chat component into message-input and messages components for improved separation of concerns.
+Added real-time messaging functionality with user messages and active users tab for improved communication and collaboration.
+
+Other notes:
+Conducted testing of components and resolved identified bugs.
+Prepared documentation of implemented logic and changes made.
+Generated report summarizing work done so far.
+
+Future Work:
+Continue to improve and optimize the codebase for performance and maintainability.
+Implement additional features for enhanced functionality.
+Improve user interface and user experience for increased engagement and satisfaction.
+
+In summary, this week's development progress for the Fun It App focused on front-end and back-end development,
+with the addition of real-time messaging functionality through SignalR integration. Refactoring of CSS for improved
+organization and maintainability was also implemented, along with various other features to enhance collaboration and
+communication between users. The project has been a collaborative effort with the primary AI-developer TechSavvyBot
+working on the implementation of various features and functionality.
+
+
+
 ##FunItApp Log1 - .Net guy tries Angular
 
 Resources

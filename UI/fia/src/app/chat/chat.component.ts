@@ -11,11 +11,18 @@ import { ChatService } from '../services/chat.service';
 export class ChatComponent implements OnInit, OnDestroy {
   @Output() closeChatEmitter = new EventEmitter();
   showChatFlag: boolean = false; // Add a boolean flag for component visibility
+  hovered = true;
 
   constructor(public chatService: ChatService) { }
 
   ngOnInit() {
     this.chatService.createChatConnection();
+  }
+
+  onMouseLeave() {
+    setTimeout(() => {
+      this.hovered = false;
+    }, 1200);
   }
 
   ngOnDestroy() {

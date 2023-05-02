@@ -1,0 +1,6 @@
+<div class="form-container">
+    <form #messageForm="ngForm" class="message-form">
+        <input [(ngModel)]="content" name="content" class="message-input" placeholder="Type your message..." />
+        <button [disabled]="!messageForm.valid" (click)="sendMessage()" type="submit" class="send-button">Send</button>
+    </form>
+</div>

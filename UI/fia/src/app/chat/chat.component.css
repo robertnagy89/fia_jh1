@@ -1,73 +1,46 @@
-/* Example CSS styles for the chat component */
-.chat-content {
+/* Chat container */
+.chat-container {
   display: flex;
-  flex-direction: row; /* Update flex-direction to row for side-by-side layout */
-  align-items: flex-start; /* Update alignment to flex-start */
-  justify-content: flex-start; /* Update alignment to flex-start */
-  padding: 20px;
+  flex-direction: row;
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: column; /* Update flex-direction to column for active users to be laid out in a column */
-  margin-right: 20px; /* Add margin-right for spacing between active users and app messages */
+/* Left sidebar */
+.left-sidebar {
+  background-color: var(--primary-color);
+  transition: all 0.4s;
+  min-height: calc(100vh - 120px);  
+  width: 23%;
 }
 
-.users-card {
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-  .users-card h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+  .left-sidebar.hovered {
+    width: 250px;
   }
 
 .users {
-  margin-top: 10px;
+  flex-direction: column;
 }
 
-.card-body {
+.user {
   display: flex;
-  flex-direction: column; /* Update flex-direction to column for active users to be laid out in a column */
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.user-button {
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 18px;
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: var(--secondary-color);
+}
+
+.name {
   font-weight: bold;
-  cursor: pointer;
-  padding: 10px 20px;
-  margin-bottom: 10px; /* Add margin-bottom for spacing between active users buttons */
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
 }
 
-.currentuser-button {
-  border: none;
-  background-color: crimson;  
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px 20px;
-  margin-bottom: 10px; /* Add margin-bottom for spacing between active users buttons */
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+.messages-container{
+    min-width: 77%;
+    justify-content: center;
+    background-color:var(--secondary-color);
 }
 
-  .user-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-  }
-
-.messages-card {
-  flex-grow: 1; /* Update flex-grow to 1 to allow app messages to take up remaining space */
-  background-color: #f8f9fa;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
