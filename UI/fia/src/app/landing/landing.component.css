@@ -1,0 +1,72 @@
+/* home.component.css */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+}
+
+.greeting-card {
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+form label {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.nameChooser {
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+}
+
+  .nameChooser.is-invalid {
+    border: 2px solid red;
+  }
+
+.submit-button {
+  background-color: var(--accent-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+  .submit-button:hover {
+    background-color: var(--accent-color-hover);
+  }
+
+.api-error-messages {
+  color: red;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
