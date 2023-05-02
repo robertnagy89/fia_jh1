@@ -12,10 +12,6 @@
   width: 23%;
 }
 
-  .left-sidebar.hovered {
-    width: 250px;
-  }
-
 .users {
   flex-direction: column;
 }
