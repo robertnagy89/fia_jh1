@@ -10,16 +10,20 @@
   transition: all 0.4s;
   min-height: calc(100vh - 120px);  
   width: 23%;
+  margin: 2px;
 }
 
 .users {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 .user {
+  margin: 5px;
+  background-color: var(--accent-color);
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  border-radius: 20px;
 }
 
 .avatar {
@@ -27,7 +31,7 @@
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 .name {
@@ -37,6 +41,7 @@
 .messages-container{
     min-width: 77%;
     justify-content: center;
-    background-color:var(--secondary-color);
+    background-color:var(--primary-color);
+    margin: 2px;
 }
 
