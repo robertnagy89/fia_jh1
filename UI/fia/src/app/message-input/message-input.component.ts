@@ -12,6 +12,7 @@ export class MessageInputComponent {
   sendMessage() {
     if (this.content.trim() !== "") {
       this.contentEmitter.emit(this.content);
+      this.content = '';
     }
   }
 }
