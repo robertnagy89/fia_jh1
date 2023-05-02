@@ -3,10 +3,10 @@
     <div *ngFor="let message of messages" class="message">
         <div class="note-card">
             <div class="message-avatar">
-                <img src="{{ message.avatar }}" alt="{{ message.sender }}" />
+                <img src="{{ message.avatar }}" alt="{{ message.from }}" />
             </div>
             <div class="message-content">
-                <div class="message-sender">{{ message.sender }}</div>
+                <div class="message-sender">{{ message.from }}</div>
                 <div class="message-text">{{ message.text }}</div>
                 <div class="message-timestamp">{{ message.timestamp | date: 'MMM d, h:mm a' }}</div>
             </div>

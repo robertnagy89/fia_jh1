@@ -54,7 +54,8 @@ export class ChatService {
 
   async sendMessage(content: string) {
     const message: Message = {
-      sender: this.myName,
+      from: this.myName,
+      to: "",
       text: content,
       timestamp: new Date(),
       avatar: this.myAvatar

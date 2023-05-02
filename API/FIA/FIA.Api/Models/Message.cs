@@ -5,7 +5,9 @@ namespace FIA.Api.Models
     // Dto
     public class Message
     {
-        public string Sender { get; set; }
+        public string From { get; set; }
+
+        public string? To { get; set; }
 
         public string Text { get; set; }
 
