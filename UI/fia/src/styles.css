@@ -1,7 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+
+/* Color Variables */
 :root {
-  --primary-color: #a9eee6;
-  --secondary-color: #fefaec;
-  --accent-color: #f38181;
-  --text-color: #625772;
+  --primary-color: #007bff;
+  --secondary-color: #212529;
+  --accent-color: #ffc107;
+  --accent-color-hover: #FFD700;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+}
+
+/* Fonts */
+body {
+  font-family: Arial, sans-serif;
 }
