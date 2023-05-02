@@ -1,11 +1,13 @@
+<app-navbar></app-navbar>
 <div class="main-container">
-    <app-navbar></app-navbar>
+    
 
 
-        <app-landing *ngIf="!isLoggedIn()"></app-landing> <!-- Render app-home if user is not logged in -->
+    <app-landing *ngIf="!isLoggedIn()"></app-landing> <!-- Render app-home if user is not logged in -->
 
-        <app-chat *ngIf="isLoggedIn()"></app-chat> <!-- Render app-chat and app-userresource if user is logged in -->
+    <app-chat *ngIf="isLoggedIn()"></app-chat> <!-- Render app-chat if user is logged in -->
 
 
-    <app-footer></app-footer>
+    
 </div>
+<app-footer></app-footer>

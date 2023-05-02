@@ -2,9 +2,10 @@
 
 /* Color Variables */
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #212529;
-  --accent-color: #ffc107;
+  --primary-color: #313A43;
+  --secondary-color: #74818C;
+  --text-color: #ffffff;
+  --accent-color: #B9C0C5;
   --accent-color-hover: #FFD700;
   --success-color: #28a745;
   --warning-color: #ffc107;
