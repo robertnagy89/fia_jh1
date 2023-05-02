@@ -1,18 +1,17 @@
-/* Footer */
+/* app-footer.component.css */
 
-footer {
-    position:fixed;
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* set a fixed height for the footer */
   background-color: var(--primary-color);
-  color: #fff;
-  padding: 10px 0;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-  footer h6 {
-    margin: 0;
-    text-align: center;
-  }
-
-  footer a {
-    color: #fff;
-    text-decoration: none;
-  }
+.footer-text {
+  font-size: 18px;
+}

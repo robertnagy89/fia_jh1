@@ -1,21 +1,52 @@
 .container {
-  background-color: (--primary-color);
-  color: white;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  justify-content: center;
+  height: 50px;
+  background-color: var(--primary-color);
 }
 
-  .brand {
-    font-size: 30px;
-    margin: 0;
-  }
+.bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
 
-  .cool-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    color: white;
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-title {
+  font-size: 24px;
+  color: var(--secondary-color);
+  margin-left: 10px;
+}
+
+.action-container {
+  display: flex;
+  align-items: center;
+}
+
+.cool-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--secondary-color);
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+  .cool-button:hover {
+    background-color: var(--accent-color-hover);
   }

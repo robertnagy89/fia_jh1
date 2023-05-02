@@ -1,10 +1,19 @@
-
 <div class="chat-container" *ngIf="isChatVisible()">
-    <div class="messages-container">
-        <app-messages [messages]="chatService.messages"></app-messages>
+    <div class="left-sidebar" [class.hovered]="hovered" (mouseleave)="onMouseLeave()">
+        <div class="users">
+            <div class="user" *ngFor="let user of chatService.onlineUsers">
+                <div class="avatar"></div>
+                <div class="name">{{ user }}</div>
+            </div>
+        </div>
     </div>
 
-    <div class="form-container">
-        <app-message-input (contentEmitter)="sendMessage($event)"></app-message-input>
+    <div class="messages-container">
+        <div class="messages-wrapper">
+            <app-messages [messages]="chatService.messages"></app-messages>
+        </div>
+        <div class="form-container">
+            <app-message-input (contentEmitter)="sendMessage($event)"></app-message-input>
+        </div>
     </div>
 </div>
