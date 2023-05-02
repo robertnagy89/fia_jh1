@@ -1,6 +1,7 @@
 # fia_jh1
 
 ##FunItApp
+
 User experience:
 
 	1. Launch the back-end functionality by running /API/FIA/FIA.Api/Program.cs directly.
@@ -8,11 +9,16 @@ User experience:
 	3. Type ng serve -o, the browser should open to our landing-component.
 
 Back-end endpoint checking via swagger:
+
 	1. Open solution located under /API/FIA/FIA.Api/Fia.Sln
 	2. Launch application, the browser should open to swagger containing our current endpoints.
+	
+	
 
 ###Dev Notes
-	SignalR->
+
+	SignalR:
+	
 		Angular chatservice sends signal to backend chathub which sends out the signal to trigger current users client to refresh its messages, and/or online users.
 		!! Naming is case sensitive, server side call needs exact match with function name to trigger on client-side.
 		++ Clients are identified by their own browser connection id and sorted on back-end
