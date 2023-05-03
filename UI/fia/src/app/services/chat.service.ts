@@ -10,7 +10,7 @@ import { User } from '../../models/user';
 })
 export class ChatService {
   myName: string = '';
-  myAvatar: string = 'cavia_wizard1';
+  myAvatar: string = 'assets/images/cavia_wizard1.png';
   showChat: boolean = false;
   private chatConnection?: HubConnection;
   onlineUsers: string[] = [];

@@ -12,6 +12,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   @Output() closeChatEmitter = new EventEmitter();
   showChatFlag: boolean = false; // Add a boolean flag for component visibility
   hovered = true;
+  defaultAvatar: string = '/assets/images/cavia_wizard1.png';
 
   constructor(public chatService: ChatService) { }
 

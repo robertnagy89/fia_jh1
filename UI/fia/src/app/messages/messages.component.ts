@@ -10,7 +10,6 @@ import { ChatService } from '../services/chat.service';
 })
 export class MessagesComponent implements OnInit {
   @Input() messages: Message[] = [];
-
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
