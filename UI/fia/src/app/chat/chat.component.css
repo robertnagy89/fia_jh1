@@ -13,13 +13,13 @@
   margin: 2px;
 }
 
-.users {
+.user-container {
     flex-direction: column;
 }
 
-.user {
+.user-card {
   margin: 5px;
-  background-color: var(--accent-color);
+  background-color: var(--secondary-color);
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -40,8 +40,13 @@
     object-fit: cover;
   }
 
-.name {
+button {
+    background-color: var(--accent-color);
   font-weight: bold;
+  width: 50%;
+  height: 40px;
+  border-radius: 3px;
+  border:none;
 }
 
 .messages-container{

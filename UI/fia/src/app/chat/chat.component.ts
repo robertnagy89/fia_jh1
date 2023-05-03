@@ -45,4 +45,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   sendMessage(content: string) {
     this.chatService.sendMessage(content);
   }
+
+  openPrivateChat(toUser: string) {
+    this.chatService.openPrivateChat(toUser);
+  }
 }

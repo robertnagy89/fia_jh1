@@ -1,17 +1,25 @@
 <div class="chat-container" *ngIf="isChatVisible()">
-    <div class="left-sidebar" [class.hovered]="hovered" (mouseleave)="onMouseLeave()">
-        <div class="users">
-            <div class="user" *ngFor="let user of chatService.onlineUsers">
+    <div class="left-sidebar">
+        <div class="user-container">
+            <div class="user-card" *ngFor="let user of chatService.onlineUsers">
                 <div class="avatar">
                     <img src="{{ defaultAvatar }}" alt="{{ defaultAvatar }}" />
                 </div>
-                <div class="name">{{ user }}</div>
+                <button type="button"
+                    (dblclick)="openPrivateChat(user)"
+                >{{ user }}</button>
+                
             </div>
         </div>
     </div>
 
     <div class="messages-container">
+        <ng-container *ngIf="!chatService.windowInitialized; else privateChat">
             <app-messages [messages]="chatService.messages"></app-messages>
+        </ng-container>
+        <ng-template #privateChat>
+            <app-private-chat-window></app-private-chat-window>
+        </ng-template>
         <div class="form-container">
             <app-message-input (contentEmitter)="sendMessage($event)"></app-message-input>
         </div>
