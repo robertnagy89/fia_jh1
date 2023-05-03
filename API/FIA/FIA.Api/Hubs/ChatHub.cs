@@ -47,6 +47,7 @@ namespace FIA.Api.Hubs
             string privateGroupName =  GetPrivateGroupName(message.From, message.To);
             await Groups.AddToGroupAsync(Context.ConnectionId, privateGroupName);
             var toConnectionId = _chatService.GetConnectionIdByUser(message.To);
+            await Groups.AddToGroupAsync(toConnectionId, privateGroupName);
 
             // open private chatbox with other end user
             await Clients.Client(toConnectionId).SendAsync("OpenPrivateChat", message);
@@ -60,7 +61,7 @@ namespace FIA.Api.Hubs
 
         public async Task RemovePrivateChat(string from, string to)
         {
-            string privateGroupName =  GetPrivateGroupName(message.From, message.To);
+            string privateGroupName =  GetPrivateGroupName(from, to);
             await Clients.Group(privateGroupName).SendAsync("ClosePrivateChat");
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, privateGroupName);
             var toConnectionId = _chatService.GetConnectionIdByUser(to);
@@ -78,7 +79,7 @@ namespace FIA.Api.Hubs
         {
             //from: john, to:david   david-john in alphabetical order
             var stringCompare = string.CompareOrdinal(from, to) < 0;
-            return stringCompare ? $"{from}-{to}" : $"{to}-{from}"
+            return stringCompare ? $"{from}-{to}" : $"{to}-{from}";
         }
     }
 }
