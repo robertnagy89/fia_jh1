@@ -12,9 +12,7 @@
             </div>
         </div>
     </div>
-
     <div class="messages-container">
-
             <app-messages [messages]="chatService.messages"></app-messages>
         <div class="form-container">
             <app-message-input (contentEmitter)="sendMessage($event)"></app-message-input>

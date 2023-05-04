@@ -25,7 +25,8 @@ import { ChatService } from './services/chat.service';
     ChatComponent,
     MessagesComponent,
     MessageInputComponent,
-    PrivateChatWindowComponent
+    PrivateChatWindowComponent,
+    UserResourceComponent
   ],
   imports: [
     BrowserModule,

@@ -36,7 +36,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   isChatVisible(): boolean { // Use a different name for the function
-    return true;
     return this.chatService.showChat;
   }
 
