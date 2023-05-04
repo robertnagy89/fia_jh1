@@ -6,8 +6,6 @@ import { Message } from '../../models/message';
 import { User } from '../../models/user';
 import { PrivateChatWindowComponent } from '../private-chat-window/private-chat-window.component';
 
-export const VIEW_CONTAINER_REF = new InjectionToken<ViewContainerRef>('VIEW_CONTAINER_REF');
-
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +20,11 @@ export class ChatService {
   privateMessages: Message[] = [];
   privateChatWindows: { toUser: string, componentRef: ComponentRef<PrivateChatWindowComponent>, active: boolean }[] = [];
   windowInitialized: boolean = false;
+    viewContainer: any;
 
-  constructor(private httpClient: HttpClient, private componentFactoryResolver: ComponentFactoryResolver,
-    @Optional() @Inject(VIEW_CONTAINER_REF) private privateChatContainer: ViewContainerRef)
+  constructor(private httpClient: HttpClient, private componentFactoryResolver: ComponentFactoryResolver)
   {
-    console.log(privateChatContainer);
+
   }
 
   registerUser(user: User) {
@@ -113,6 +111,31 @@ export class ChatService {
       .catch(err => console.log(err));
   }
 
+  getPrivateChatMessages(fromUser: string, toUser: string) {
+    const messages = this.privateMessages.filter(message => {
+      return (message.from === fromUser && message.to === toUser) || (message.from === toUser && message.to === fromUser);
+    });
+    return messages;
+  }
+
+  removePrivateChatWindow(toUser: string) {
+    // Remove the private chat window from the list of active chat windows
+    const index = this.privateChatWindows.findIndex(window => window.toUser === toUser);
+    if (index !== -1) {
+      const componentRef = this.privateChatWindows[index].componentRef;
+      componentRef.destroy();
+      this.privateChatWindows.splice(index, 1);
+    }
+
+    // If there are no more active private chat windows, close the private chat
+    if (this.privateChatWindows.length === 0) {
+      this.windowInitialized = false;
+      this.privateMessages = [];
+      this.chatConnection?.invoke('ClosePrivateMessage')
+        .catch(err => console.log(err));
+    }
+  }
+
   openPrivateChat(otherUser: string) {
     // Check if there is already an active private chat window for the other user
     const existingChatWindow = this.privateChatWindows.find(window => window.toUser === otherUser);
@@ -125,7 +148,7 @@ export class ChatService {
       // If there is no active private chat window, create a new one
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(PrivateChatWindowComponent);
       console.log(componentFactory);
-      const componentRef = this.privateChatContainer.createComponent(componentFactory);
+      const componentRef = this.viewContainer.createComponent(componentFactory);
       componentRef.instance.toUser = otherUser;
 
       // Add the new private chat window to the list of active chat windows
