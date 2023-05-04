@@ -14,12 +14,8 @@
     </div>
 
     <div class="messages-container">
-        <ng-container *ngIf="!chatService.windowInitialized; else privateChat">
+
             <app-messages [messages]="chatService.messages"></app-messages>
-        </ng-container>
-        <ng-template #privateChat>
-            <app-private-chat-window></app-private-chat-window>
-        </ng-template>
         <div class="form-container">
             <app-message-input (contentEmitter)="sendMessage($event)"></app-message-input>
         </div>
