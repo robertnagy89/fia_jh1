@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewContainerRef } from '@angular/core';
 import { ChatService } from '../services/chat.service';
 
 @Component({
@@ -10,11 +10,12 @@ import { ChatService } from '../services/chat.service';
 
 export class ChatComponent implements OnInit, OnDestroy {
   @Output() closeChatEmitter = new EventEmitter();
-  showChatFlag: boolean = false; // Add a boolean flag for component visibility
+  showChatFlag: boolean = true;
   hovered = true;
   defaultAvatar: string = '/assets/images/cavia_wizard1.png';
+  selectedUser: string = "";
 
-  constructor(public chatService: ChatService) { }
+  constructor(public chatService: ChatService, private _viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
     this.chatService.createChatConnection();
@@ -44,5 +45,10 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   sendMessage(content: string) {
     this.chatService.sendMessage(content);
+  }
+
+  openPrivateChat(toUser: string) {
+    this.selectedUser = toUser;
+    this.chatService.openPrivateChat(toUser);
   }
 }

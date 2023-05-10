@@ -1,0 +1,10 @@
+<div class="privateChatContainer">
+    <div class="messages-container">
+        <div class="messages-wrapper">
+            <app-messages [messages]="chatService.privateMessages"></app-messages>
+        </div>
+        <div class="form-container">
+            <app-message-input (contentEmitter)="sendMessage($event)"></app-message-input>
+        </div>
+    </div>
+</div>
