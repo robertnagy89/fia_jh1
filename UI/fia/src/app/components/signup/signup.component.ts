@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -16,11 +16,24 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       username: ['', Validators.required],
-      signupemail: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
+      useremail: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required]
+    }, { validator: this.passwordMatchValidator });
   }
+  passwordMatchValidator: ValidatorFn = (control: AbstractControl) => {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
 
+    if (password && confirmPassword && password.value !== confirmPassword.value) {
+      confirmPassword.setErrors({ passwordMismatch: true });
+
+    }
+    else {
+      confirmPassword?.markAsTouched();
+    }
+    return null;
+  }
   signup() {
     // Perform any additional client-side validation if needed
 

@@ -1,19 +1,32 @@
 <div class="signup-container">
     <form [formGroup]="signupForm" (ngSubmit)="signup()">
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="signupemail" formControlName="email" class="form-control" />
+            <label for="name">Name</label>
+            <input type="text" formControlName="username" class="form-control" />
+            <div *ngIf="signupForm.controls['username'].hasError('required')" class="error-message">
+                Name is required
+            </div>
+            <div *ngIf="signupForm.controls['username'].hasError('minLength')" class="error-message">
+                Name must be at least 3 characters long
+            </div>
+            <div *ngIf="signupForm.controls['username'].hasError('maxLength')" class="error-message">
+                Name must not exceed 20 characters
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="useremail">Email</label>
+            <input type="email" id="useremail" formControlName="useremail" class="form-control" />
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="signuppassword" formControlName="password" class="form-control" />
         </div>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error': signupForm.get('confirmPassword')?.errors?.['passwordMismatch'] }">
             <label for="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" />
         </div>
         <div class="form-group">
-            <button type="submit" >Sign Up</button>
+            <button type="submit">Sign Up</button>
         </div>
     </form>
 </div>
