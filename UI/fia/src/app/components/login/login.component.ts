@@ -9,6 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  type: string = 'password';
+  state: string = '*';
+
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.loginForm = this.formBuilder.group({
@@ -19,6 +22,17 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  togglePassword() {
+    if (this.type == 'password') {
+      this.type = 'text';
+      this.state = 'abc';
+    }
+    else {
+      this.type = 'password';
+      this.state = '*'
+    }
   }
 
   onSubmit() {

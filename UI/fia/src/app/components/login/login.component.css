@@ -19,8 +19,7 @@ label {
   font-weight: bold;
 }
 
-input[type="email"],
-input[type="password"] {
+input{
   padding: 10px;
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
@@ -28,8 +27,8 @@ input[type="password"] {
 
 button {
   padding: 10px 20px;
-  background-color: var(--secondary-color);
-  color: var(--secondary-text-color);
+  background-color: var(--accent-color);
+  color: var(--text-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;

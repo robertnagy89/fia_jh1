@@ -20,7 +20,8 @@
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" formControlName="password" class="form-control" />
+            <input [type]="type" id="password" formControlName="password" class="form-control" />
+            <button (click)="togglePassword()">{{ state }}</button>
         </div>
         <div class="form-group">
             <button type="submit" [disabled]="loginForm.invalid">Login</button>
