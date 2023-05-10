@@ -4,7 +4,7 @@ import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { environment } from '../../environments/environment';
 import { Message } from '../../models/message';
 import { User } from '../../models/user';
-import { PrivateChatWindowComponent } from '../private-chat-window/private-chat-window.component';
+import { PrivateChatWindowComponent } from '../components/private-chat-window/private-chat-window.component';
 
 
 @Injectable({

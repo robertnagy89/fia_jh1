@@ -1,16 +1,16 @@
 import {  ReactiveFormsModule } from '@angular/forms';
-import { UserResourceComponent } from './userresource/userresource.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { LandingComponent } from './landing/landing.component';
-import { MessagesComponent } from './messages/messages.component';
-import { MessageInputComponent } from './message-input/message-input.component';
-import { PrivateChatWindowComponent } from './private-chat-window/private-chat-window.component';
+import { UserResourceComponent } from './components/userresource/userresource.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { MessageInputComponent } from './components/message-input/message-input.component';
+import { PrivateChatWindowComponent } from './components/private-chat-window/private-chat-window.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { ChatComponent } from './chat/chat.component';
+import { ChatComponent } from './components/chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatService } from './services/chat.service';
 

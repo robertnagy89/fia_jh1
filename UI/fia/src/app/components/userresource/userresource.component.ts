@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserResource } from '../../models/userresource.model';
-import { UserResourceService } from '../services/userresource.service';
+import { UserResource } from '../../../models/userresource.model';
+import { UserResourceService } from '../../services/userresource.service';
 
 @Component({
   selector: 'app-userresource',

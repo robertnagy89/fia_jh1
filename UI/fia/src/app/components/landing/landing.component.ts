@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
-import { ChatService } from '../services/chat.service';
+import { AuthService } from '../../services/auth.service';
+import { ChatService } from '../../services/chat.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 

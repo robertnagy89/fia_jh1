@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ChatService } from '../services/chat.service';
-import { UserResourceService } from '../services/userresource.service';
+import { ChatService } from '../../services/chat.service';
+import { UserResourceService } from '../../services/userresource.service';
 
 @Component({
   selector: 'app-navbar',
