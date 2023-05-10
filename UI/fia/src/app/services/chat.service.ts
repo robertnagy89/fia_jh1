@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ComponentFactoryResolver, ComponentRef, Inject, Injectable, InjectionToken, Optional, ViewContainerRef } from '@angular/core';
+import { ComponentFactoryResolver, ComponentRef, Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { environment } from '../../environments/environment';
 import { Message } from '../../models/message';
@@ -10,6 +10,7 @@ import { PrivateChatWindowComponent } from '../private-chat-window/private-chat-
 @Injectable({
   providedIn: 'root'
 })
+
 export class ChatService {
   myName: string = '';
   myAvatar: string = 'assets/images/cavia_wizard1.png';
