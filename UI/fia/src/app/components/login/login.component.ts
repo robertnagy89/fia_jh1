@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -36,24 +36,44 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+
     if (this.loginForm.invalid) {
-      return;
+      this.validateAllFormGroups(this.loginForm);
+      console.log('Invalid Form');
     }
+    else {
+      console.log(this.loginForm);
+      this.validateAllFormGroups(this.loginForm);
 
-    const email = this.loginForm.value.email;
-    const password = this.loginForm.value.password;
+      const email = this.loginForm.value.email;
+      const password = this.loginForm.value.password;
 
-    // Call the backend API to perform login
-    this.http.post('/login', { email, password })
-      .subscribe(
-        (response) => {
-          // Handle successful login
-          console.log('Login successful', response);
-          // Redirect the user to the desired page
-        },
-        (error) => {
-          // Handle login error
-          console.log('Login Failed', error);
-        });
+      // Call the backend API to perform login
+      this.http.post('/login', { email, password })
+        .subscribe(
+          (response) => {
+            // Handle successful login
+            console.log('Login successful', response);
+            // Redirect the user to the desired page
+          },
+          (error) => {
+            // Handle login error
+            console.log('Login Failed', error);
+
+          });
+    }
+   
+  }
+
+  private validateAllFormGroups(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(group => {
+      const control = formGroup.get(group);
+      if (control instanceof FormControl) {
+        control.markAsDirty({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormGroups(control);
+      }
+
+    })
   }
 }
