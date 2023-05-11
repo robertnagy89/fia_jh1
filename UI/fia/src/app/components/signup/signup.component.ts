@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { User } from '../../../models/user';
+import ValidateForm from '../../helpers/validateForm';
 
 @Component({
   selector: 'app-signup',
@@ -44,18 +45,15 @@ export class SignupComponent implements OnInit {
     if (this.signupForm.valid) {
       // Logic for sign up
       // Create a user object with the necessary properties
-      console.log(this.signupForm.value);
       const user: User = {
         id: '00000000-0000-0000-0000-000000000000',
-        name: this.signupForm.value.username,
         email: this.signupForm.value.useremail,
-        password: this.signupForm.value.userpassword
+        password: this.signupForm.value.userpassword,
+        name: this.signupForm.value.username
       };
-
       console.log(user);
-
       // Make an HTTP POST request to the backend signup endpoint
-      this.http.post(`${environment.apiUrl}api/Signup`, user).subscribe(
+      this.http.post(`${environment.apiUrl}api/signup`, user).subscribe(
         (response) => {
           // Handle successful signup
           console.log('Signup successful:', response);
@@ -68,20 +66,9 @@ export class SignupComponent implements OnInit {
 
     }
     else {
-      this.validateAllFormGroups(this.signupForm);
+      ValidateForm.validateAllFormGroups(this.signupForm);
+      
       // Logic for error
     }
-  }
-
-  private validateAllFormGroups(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(group => {
-      const control = formGroup.get(group);
-      if (control instanceof FormControl) {
-        control.markAsDirty({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormGroups(control);
-      }
-
-    })
   }
 }

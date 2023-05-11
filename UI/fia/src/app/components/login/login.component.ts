@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import ValidateForm from '../../helpers/validateForm';
 
 @Component({
   selector: 'app-login',
@@ -38,12 +39,12 @@ export class LoginComponent implements OnInit {
   onSubmit() {
 
     if (this.loginForm.invalid) {
-      this.validateAllFormGroups(this.loginForm);
+      ValidateForm.validateAllFormGroups(this.loginForm);
       console.log('Invalid Form');
     }
     else {
       console.log(this.loginForm);
-      this.validateAllFormGroups(this.loginForm);
+      ValidateForm.validateAllFormGroups(this.loginForm);
 
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
@@ -63,17 +64,5 @@ export class LoginComponent implements OnInit {
           });
     }
    
-  }
-
-  private validateAllFormGroups(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(group => {
-      const control = formGroup.get(group);
-      if (control instanceof FormControl) {
-        control.markAsDirty({ onlySelf: true });
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormGroups(control);
-      }
-
-    })
   }
 }
