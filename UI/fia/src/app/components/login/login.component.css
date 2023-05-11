@@ -1,0 +1,40 @@
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--secondary-color);
+  color: var(--primary-text-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input{
+  padding: 10px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }

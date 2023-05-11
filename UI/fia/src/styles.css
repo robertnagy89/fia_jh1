@@ -16,3 +16,7 @@
 body {
   font-family: Arial, sans-serif;
 }
+
+.error-message{
+    color: var(--warning-color);
+}

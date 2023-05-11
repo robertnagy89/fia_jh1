@@ -1,4 +1,4 @@
-import {  ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { UserResourceComponent } from './components/userresource/userresource.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -13,6 +13,9 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatService } from './services/chat.service';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -25,13 +28,16 @@ import { ChatService } from './services/chat.service';
     ChatComponent,
     MessagesComponent,
     MessageInputComponent,
-    PrivateChatWindowComponent
+    PrivateChatWindowComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [
     ChatService
