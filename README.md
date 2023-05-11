@@ -2,6 +2,9 @@
 
 ##FunItApp
 
+	The app is under constant development and may result in viewing a semi-functional state of the currently worked on features.
+											Make sure to check back later!
+
 User experience:
 
 	1. Launch the back-end functionality by running /API/FIA/FIA.Api/Program.cs directly.
@@ -12,10 +15,14 @@ Back-end endpoint checking via swagger:
 
 	1. Open solution located under /API/FIA/FIA.Api/Fia.Sln
 	2. Launch application, the browser should open to swagger containing our current endpoints.
-	
+
+
+########Currently Working On: login/signup/userentity/validation/authentication
 	
 
 ###Dev Notes
+	EF-Core:
+		Messages currently are kept in memory, while our users will be entities.
 
 	SignalR:
 	
