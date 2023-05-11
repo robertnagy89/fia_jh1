@@ -7,10 +7,10 @@
             <div *ngIf="loginForm.controls['name'].hasError('required')" class="error-message">
                 * Name is required
             </div>
-            <div *ngIf="loginForm.controls['name'].hasError('minLength')" class="error-message">
+            <div *ngIf="loginForm.controls['name'].hasError('minlength')" class="error-message">
                  * Name must be at least 3 characters long
             </div>
-            <div *ngIf="loginForm.controls['name'].hasError('maxLength')" class="error-message">
+            <div *ngIf="loginForm.controls['name'].hasError('maxlength')" class="error-message">
                 * Name must not exceed 20 characters
             </div>
         </div>
