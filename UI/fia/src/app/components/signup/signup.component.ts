@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Vali
 import { environment } from '../../../environments/environment';
 import { User } from '../../../models/user';
 import ValidateForm from '../../helpers/validateForm';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,12 +14,13 @@ import ValidateForm from '../../helpers/validateForm';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient)
+  constructor(private formBuilder: FormBuilder, private authService: AuthService)
   {
     this.signupForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      useremail: ['', [Validators.required, Validators.email]],
-      userpassword: ['', [Validators.required, Validators.minLength(6)]],
+      id: ['00000000-0000-0000-0000-000000000000'],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
   }
@@ -28,7 +30,7 @@ export class SignupComponent implements OnInit {
   }
 
   passwordMatchValidator: ValidatorFn = (control: AbstractControl) => {
-    const password = control.get('userpassword');
+    const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
 
     if (password && confirmPassword && password.value !== confirmPassword.value) {
@@ -45,24 +47,24 @@ export class SignupComponent implements OnInit {
     if (this.signupForm.valid) {
       // Logic for sign up
       // Create a user object with the necessary properties
+      console.log(this.signupForm.value);
       const user: User = {
         id: '00000000-0000-0000-0000-000000000000',
-        email: this.signupForm.value.useremail,
-        password: this.signupForm.value.userpassword,
-        name: this.signupForm.value.username
+        email: this.signupForm.value.email,
+        password: this.signupForm.value.password,
+        name: this.signupForm.value.name
       };
-      console.log(user);
-      // Make an HTTP POST request to the backend signup endpoint
-      this.http.post(`${environment.apiUrl}api/signup`, user).subscribe(
-        (response) => {
-          // Handle successful signup
-          console.log('Signup successful:', response);
-        },
-        (error) => {
-          // Handle signup error
-          console.error('Signup error:', error);
-        }
-      );
+
+      this.authService.signUp(user)
+        .subscribe({
+          next: (res) => {
+            alert(res.message);
+          },
+          error: (err) => {
+            alert(err?.error.message);
+          }
+        })
+      
 
     }
     else {

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import ValidateForm from '../../helpers/validateForm';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,9 @@ export class LoginComponent implements OnInit {
   state: string = '*';
 
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onLogin() {
 
     if (this.loginForm.invalid) {
       ValidateForm.validateAllFormGroups(this.loginForm);
@@ -49,20 +49,15 @@ export class LoginComponent implements OnInit {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
 
-      // Call the backend API to perform login
-      this.http.post('/login', { email, password })
-        .subscribe(
-          (response) => {
-            // Handle successful login
-            console.log('Login successful', response);
-            // Redirect the user to the desired page
+      this.authService.login(this.loginForm.value)
+        .subscribe({
+          next: (res) => {
+            alert(res.message);
           },
-          (error) => {
-            // Handle login error
-            console.log('Login Failed', error);
-
-          });
+          error: (err) => {
+            alert(err?.error.message);
+          }
+        })
     }
-   
   }
 }
