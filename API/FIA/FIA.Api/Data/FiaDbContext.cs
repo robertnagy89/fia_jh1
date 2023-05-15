@@ -9,8 +9,15 @@ namespace FIA.Api.Data
         {
         }
 
-        // DbSet - Acts as Table
+        // DbSets - Act as Tables inside our DB
         public DbSet<UserResource> UserResource { get; set; }
+
+        public DbSet<User> Users { get;set;}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // TODO: Add dummy data here
+        }
 
     }
 }

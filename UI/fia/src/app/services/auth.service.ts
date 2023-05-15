@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +8,16 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private loggedIn: boolean = false; // Flag to track login status
 
-  constructor() { }
+  private baseUrl: string = `${environment.apiUrl}api/user/`;
+  constructor(private http: HttpClient) { }
+
+  signUp(userObj: any) {
+    return this.http.post<any>(`${this.baseUrl}register`, userObj);
+  }
+
+  login(loginObj: any) {
+    return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj);
+  }
 
   // Simulate login
   onLogin(): void {
