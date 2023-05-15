@@ -17,7 +17,7 @@ namespace FIA.Api.Controllers
         }
 
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] User user)
+        public async Task<IActionResult> Authenticate([FromBody]User user)
         {
             if (user == null) return BadRequest();
 

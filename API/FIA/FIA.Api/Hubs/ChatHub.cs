@@ -11,7 +11,7 @@ namespace FIA.Api.Hubs
         private readonly ChatService _chatService;
         public ChatHub(ChatService chatService)
         {
-            _chatService = chatService;
+            _chatService = chatService;            
         }
 
         public override async Task OnConnectedAsync()
