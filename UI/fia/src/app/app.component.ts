@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { ChatService } from './services/chat.service';
 
@@ -9,7 +10,7 @@ import { ChatService } from './services/chat.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private authService: AuthService, private chatService: ChatService) { }
+  constructor(private authService: AuthService, private chatService: ChatService, private router: Router)  {  }
   title = 'fia';
 
   // Use the isLoggedIn() method from the AuthService to check login status

@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { User } from '../../../models/user';
 import ValidateForm from '../../helpers/validateForm';
@@ -14,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService)
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router)
   {
     this.signupForm = this.formBuilder.group({
       id: ['00000000-0000-0000-0000-000000000000'],
@@ -59,6 +59,8 @@ export class SignupComponent implements OnInit {
         .subscribe({
           next: (res) => {
             alert(res.message);
+            this.signupForm.reset();
+            this.router.navigate(['login']);
           },
           error: (err) => {
             alert(err?.error.message);

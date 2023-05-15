@@ -16,6 +16,8 @@ import { ChatService } from './services/chat.service';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { RouterModule } from '@angular/router';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -30,14 +32,16 @@ import { RouterModule } from '@angular/router';
     MessageInputComponent,
     PrivateChatWindowComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [
     ChatService

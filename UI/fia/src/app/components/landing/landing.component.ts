@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ChatService } from '../../services/chat.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,12 @@ export class LandingComponent implements OnInit {
   apiErrorMessages: string[] = [];
   openChat = false;
 
-  constructor(private formBuilder: FormBuilder, private chatService: ChatService, private authService: AuthService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private chatService: ChatService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -29,7 +35,6 @@ export class LandingComponent implements OnInit {
   }
 
   submitForm() {
-
     this.submitted = true;
     this.apiErrorMessages = [];
     if (this.userForm.valid) {
