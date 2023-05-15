@@ -1,5 +1,5 @@
-﻿using FIA.Api.Data;
-using Microsoft.AspNetCore.Http;
+﻿using Fia.Api.Utilities;
+using FIA.Api.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -31,7 +31,9 @@ namespace FIA.Api.Controllers
         public async Task<IActionResult> RegisterUser([FromBody]User user)
         {
             if(user == null) return BadRequest();
-
+            user.Password = PasswordHasher.HashPassword(user.Password);
+            user.Role = "User";
+            user.Token = "";
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
             return Ok(new { Message = "User Registered!" });
