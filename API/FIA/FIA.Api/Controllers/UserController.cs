@@ -1,8 +1,12 @@
 ﻿using Fia.Api.Utilities;
 using FIA.Api.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -28,7 +32,13 @@ namespace FIA.Api.Controllers
             if (existingUser == null) return NotFound(new { Message = "User not found" });
             if (!PasswordHasher.VerifyPassword(user.Password, existingUser.Password))
                 return BadRequest(new {Message = "Password Incorrect"});
-            return Ok(new { Message = "Login successful!"});
+
+            existingUser.Token = CreateJwt(existingUser);
+
+            return Ok(new {
+                Token = existingUser.Token,
+                Message = "Login successful!"
+            });
         }
 
 
@@ -55,6 +65,13 @@ namespace FIA.Api.Controllers
             return Ok(new { Message = "User Registered!" });
         }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<User>> GetAllUsers()
+        {
+            return Ok(await _context.Users.ToListAsync());  
+        }
+
         private Task<bool> CheckUserNameExistAsync(string username)
             => _context.Users.AnyAsync(x => x.Name == username);
 
@@ -72,6 +89,29 @@ namespace FIA.Api.Controllers
             if (!Regex.IsMatch(password, "[!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]*$"))
                 sb.Append("Password should contain a special character");
             return sb.ToString();
+        }
+
+        private string CreateJwt(User user)
+        {
+            var jwtHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("veryverysecret.....");
+            var identity = new ClaimsIdentity(new Claim[]
+            {
+                new Claim(ClaimTypes.Role, user.Role),
+                new Claim(ClaimTypes.Name, user.Name)
+            });
+
+            var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = identity,
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = credentials
+            };
+
+            var token = jwtHandler.CreateToken(tokenDescriptor);
+            return jwtHandler.WriteToken(token);
         }
     }
 }
