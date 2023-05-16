@@ -10,21 +10,14 @@ import { ChatService } from '../../services/chat.service';
 
 export class ChatComponent implements OnInit, OnDestroy {
   @Output() closeChatEmitter = new EventEmitter();
-  showChatFlag: boolean = true;
   hovered = true;
   defaultAvatar: string = '/assets/images/cavia_wizard1.png';
   selectedUser: string = "";
 
-  constructor(public chatService: ChatService, private _viewContainerRef: ViewContainerRef) { }
+  constructor(public chatService: ChatService) { }
 
   ngOnInit() {
     this.chatService.createChatConnection();
-  }
-
-  onMouseLeave() {
-    setTimeout(() => {
-      this.hovered = false;
-    }, 1200);
   }
 
   ngOnDestroy() {
@@ -33,14 +26,6 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   backToHome() {
     this.closeChatEmitter.emit();
-  }
-
-  isChatVisible(): boolean { // Use a different name for the function
-    return this.chatService.showChat;
-  }
-
-  toggleChat(): void {
-    this.showChatFlag = !this.showChatFlag; // Update the value of the boolean flag
   }
 
   sendMessage(content: string) {
