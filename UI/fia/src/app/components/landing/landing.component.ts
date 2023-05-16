@@ -20,7 +20,6 @@ export class LandingComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private chatService: ChatService,
-    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -43,7 +42,6 @@ export class LandingComponent implements OnInit {
           next: () => {
             this.chatService.myName = this.userForm.get('name')?.value;
             this.openChat = true;
-            this.authService.onLogin();
             this.userForm.reset();
             this.submitted = false;
           },
