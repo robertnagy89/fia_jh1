@@ -31,22 +31,17 @@
   align-items: center;
 }
 
-.cool-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: var(--secondary-color);
+a {
   background-color: var(--accent-color);
   border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin-left: 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 18px;
+  color: var(--secondary-color);
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
 }
 
-  .cool-button:hover {
+  a:hover {
     background-color: var(--accent-color-hover);
   }
