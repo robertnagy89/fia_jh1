@@ -47,11 +47,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
         ValidateForm.validateAllFormGroups(this.loginForm);
 
 
-        this.authService.login(this.loginForm.value)
+        this.authService.onLogin(this.loginForm.value)
           .subscribe({
             next: (res) => {
               alert(res.message);
               this.loginForm.reset();
+              this.authService.storeToken(res.token);
               this.router.navigate(['dashboard']);
             },
             error: (err) => {
