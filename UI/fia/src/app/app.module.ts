@@ -2,7 +2,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserResourceComponent } from './components/userresource/userresource.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { LandingComponent } from './components/landing/landing.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { MessageInputComponent } from './components/message-input/message-input.component';
 import { PrivateChatWindowComponent } from './components/private-chat-window/private-chat-window.component';
@@ -26,7 +25,6 @@ import { AppRoutingModule } from './app-routing.module';
     UserResourceComponent,
     NavbarComponent,
     FooterComponent,
-    LandingComponent,
     ChatComponent,
     MessagesComponent,
     MessageInputComponent,
