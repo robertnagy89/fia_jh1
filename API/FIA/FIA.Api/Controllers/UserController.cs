@@ -34,9 +34,9 @@ namespace FIA.Api.Controllers
 
             existingUser.Token = CreateJwt(existingUser);
 
-            return Ok(new { 
-                Message = "Login successful!",
-                Token= user.Token
+            return Ok(new {
+                Token = existingUser.Token,
+                Message = "Login successful!"
             });
         }
 
@@ -62,6 +62,12 @@ namespace FIA.Api.Controllers
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
             return Ok(new { Message = "User Registered!" });
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<User>> GetAllUsers()
+        {
+            return Ok(await _context.Users.ToListAsync());  
         }
 
         private Task<bool> CheckUserNameExistAsync(string username)
