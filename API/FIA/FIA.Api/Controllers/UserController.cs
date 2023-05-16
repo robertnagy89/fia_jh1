@@ -1,5 +1,6 @@
 ﻿using Fia.Api.Utilities;
 using FIA.Api.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -64,6 +65,7 @@ namespace FIA.Api.Controllers
             return Ok(new { Message = "User Registered!" });
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<User>> GetAllUsers()
         {
