@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   import ValidateForm from '../../helpers/validateForm';
   import { AuthService } from '../../services/auth.service';
   import { Router } from '@angular/router';
+import { UserStoreService } from '../../services/user-store.service';
 
   @Component({
     selector: 'app-login',
@@ -15,7 +16,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     state: string = '*';
 
 
-    constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+    constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private userStore: UserStoreService) {
       this.loginForm = this.formBuilder.group({
         name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
         password: ['', Validators.required]
@@ -50,9 +51,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
         this.authService.onLogin(this.loginForm.value)
           .subscribe({
             next: (res) => {
+
               alert(res.message);
               this.loginForm.reset();
               this.authService.storeToken(res.token);
+              const tokenPayload = this.authService.decodedToken();
+              this.userStore.setNameForStore(tokenPayload.name);
+              this.userStore.setRoleForStore(tokenPayload.role);
+
               this.router.navigate(['dashboard']);
             },
             error: (err) => {
