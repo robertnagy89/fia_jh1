@@ -77,12 +77,4 @@ export class UserResourceComponent implements OnInit {
         this.getAllResources();
       })
   }
-
-  isResourcesVisible(): boolean { // Use a different name for the function
-    return this.userResourceService.showResources;
-  }
-
-  toggleChat(): void {
-    this.showResourceFlag = !this.showResourceFlag; // Update the value of the boolean flag
-  }
 }
