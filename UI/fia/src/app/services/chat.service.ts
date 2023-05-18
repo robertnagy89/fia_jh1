@@ -5,6 +5,9 @@ import { environment } from '../../environments/environment';
 import { Message } from '../../models/message';
 import { User } from '../../models/user';
 import { PrivateChatWindowComponent } from '../components/private-chat-window/private-chat-window.component';
+import { AuthService } from './auth.service';
+import { UserStoreService } from './user-store.service';
+import { UserService } from './user.service';
 
 
 @Injectable({
@@ -22,14 +25,38 @@ export class ChatService {
   privateChatWindows: { toUser: string, componentRef: ComponentRef<PrivateChatWindowComponent>, active: boolean }[] = [];
   windowInitialized: boolean = false;
     viewContainer: any;
+    componentFactoryResolver: any;
 
-  constructor(private httpClient: HttpClient, private componentFactoryResolver: ComponentFactoryResolver)
+  constructor(private httpClient: HttpClient, private auth: AuthService, private userService: UserService, private userStore: UserStoreService)
   {
 
   }
 
-  registerUser(user: User) {
-    return this.httpClient.post(`${environment.apiUrl}api/chat/register`, user, { responseType: 'text' })
+  registerUser() {
+    this.userStore.getNameFromStore().subscribe((val) => {
+      const myName = this.auth.getNameFromToken();
+      this.myName = val || myName;
+      console.log(this.myName);
+      if (this.myName) {
+        this.userService.getUserByName(this.myName).subscribe((val) => {
+          const user: User = {
+            id: val.id,
+            name: val.name, // Replace with the appropriate property from val
+            email: val.email,
+            password: val.password
+          };
+          console.log(user);
+          return this.httpClient
+            .post(`${environment.apiUrl}api/chat/register`, user, { responseType: 'text' })
+            .subscribe(() => {
+              console.log('User registered successfully.');
+              this.createChatConnection();
+            }, (error) => {
+              console.error('Failed to register user.', error);
+            });
+        });
+      }
+    });
   }
 
   createChatConnection() {
@@ -68,7 +95,11 @@ export class ChatService {
   }
 
   async addUserConnectionId() {
+    return this.chatConnection?.invoke("AddUserConnectionId", this.myName)
+      .catch(err => console.log(err));
+  }
 
+  async removeUserConnectionId() {
     return this.chatConnection?.invoke("AddUserConnectionId", this.myName)
       .catch(err => console.log(err));
   }
