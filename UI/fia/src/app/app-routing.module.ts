@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './components/chat/chat.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserResourceComponent } from './components/userresource/userresource.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -12,8 +13,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
-  { path: 'chat', component: ChatComponent },
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
   { path: 'user-resource', component: UserResourceComponent },
+  { path: 'navbar', component: NavbarComponent }
 ];
 
 @NgModule({

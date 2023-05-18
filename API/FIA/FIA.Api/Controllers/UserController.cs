@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -63,6 +64,20 @@ namespace FIA.Api.Controllers
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
             return Ok(new { Message = "User Registered!" });
+        }
+
+        [Authorize]
+        [HttpGet("{name}")]
+        public async Task<ActionResult<User>> GetUserByName(string name)
+        {
+            User user = await _context.Users.FirstOrDefaultAsync(u => u.Name == name);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
         }
 
         [Authorize]

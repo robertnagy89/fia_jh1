@@ -1,5 +1,6 @@
 ﻿using FIA.Api.Models;
 using FIA.Api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,7 @@ namespace FIA.Api.Controllers
             _chatService = chatService;
         }
 
+        [Authorize]
         [HttpPost("register")]
         public IActionResult RegisterUser(User user)
         {

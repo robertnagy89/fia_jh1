@@ -2,8 +2,8 @@
 
 ##FunItApp
 
-	The app is under constant development and may result in viewing a semi-functional state of the currently worked on features.
-											Make sure to check back later!
+The app is under constant development and may result in viewing a semi-functional state 
+of the currently worked on features. Make sure to check back later!
 
 User experience:
 
@@ -22,7 +22,8 @@ Back-end endpoint checking via swagger:
 
 ###Dev Notes
 	EF-Core:
-		Messages currently are kept in memory, while our users will be entities.
+		Messages are currently kept in memory.
+		Now User entities available through MSSQL.
 
 	SignalR:
 	
@@ -30,6 +31,87 @@ Back-end endpoint checking via swagger:
 		!! Naming is case sensitive, server side call needs exact match with function name to trigger on client-side.
 		++ Clients are identified by their own browser connection id and sorted on back-end
 		++ Does not result in needless checks to server
+
+
+#################
+FunItApp Log3 - The one with all the angular auth
+
+Date Task Hours
+2023-05-11 Update: README.md 2
+2023-05-11 Feat: Add AuthService 8
+2023-05-11 Feat: Add UserController 6
+2023-05-13 Feat: Add User properties 4
+2023-05-13 Feat: Add User to angular models 4
+2023-05-13 Feat: Add global color to all errors 6
+2023-05-13 Fix: Naming in login 4
+2023-05-13 Fix: Update route for consistency 4
+2023-05-13 Feat: Add password controls 6
+2023-05-13 Refactor: validateForm moved to helpers 4
+2023-05-15 Feat: Register jwt authentication service 6
+2023-05-15 Feat: Add CreateJwt method 4
+2023-05-15 Update: PackageRef inc. JwtBearer 4
+2023-05-17 Feat: Add token interceptor error handling 6
+2023-05-17 Feat: Add authorization attribute to GetAllUsers 4
+2023-05-17 Feat: Add list registered users to dashboard 4
+2023-05-17 Feat: Add logOut functionality to dashboard 4
+2023-05-17 Feat: Add alert for unauthorized access 4
+2023-05-17 Refactor: Remove landing component 4
+2023-05-17 Feat: Add auth-guard to dashboard route 4
+2023-05-17 Feat: Add authservice logic 6
+2023-05-17 Feat: Add base auth guard 4
+2023-05-17 Feat: Add jwt to localstorage 4
+2023-05-17 Fix: Removed unused feature call 4
+2023-05-17 Feat: Add backend token creation 6
+Total 126
+
+Front-end Development:
+Continued development of front-end components and UI enhancements for improved user experience.
+Refactored codebase for better organization and maintainability.
+Implemented authentication service and user controller for user-related functionality.
+Added password controls and validation to login component.
+Updated README.md with relevant project information.
+Implemented token interceptor for error handling.
+Added authorization attributes to API endpoints.
+Implemented dashboard functionality, including the list of registered users and log out functionality.
+Added alerts for unauthorized access.
+Refactored landing component(right out of existence) and added authentication guard to dashboard route.
+
+Back-end Development:
+Implemented authentication service and token creation on the backend.
+Added user controller for user-related functionality.
+Updated package references, including JwtBearer, for improved security.
+Implemented authorization attributes to API endpoints.
+Added token interceptor for error handling.
+
+Other notes:
+Conducted testing of components and resolved identified bugs.
+Prepared documentation of implemented logic and changes made.
+Generated report summarizing work done so far.
+
+Future Work:
+Continue to enhance and optimize the codebase for performance and maintainability.
+Implement additional features and functionality based on project requirements.
+Refine user interface and user experience for better engagement and satisfaction.
+
+In summary, the recent development progress for the FunItApp project focused on authentication 
+and authorization functionality, including the implementation of an authentication service, user controller
+, and token creation on the backend. Front-end enhancements were made to improve the user interface 
+and overall user experience. Testing, bug fixing, and documentation preparation were also performed. 
+The project has been a collaborative effort with the primary AI-developer TechSavvyBot working on the implementation
+of various features and functionality. The team has been proactive in addressing issues and making necessary improvements
+to ensure the project's success.
+
+The recent commits focused on implementing user authentication, authorization, and security measures.
+The addition of the UserStoreService allows for storing and retrieving user-related data. 
+The frontend and backend have been enhanced with various features such as admin view, 
+navigation bar display based on login status, distinct admin/user dashboard, 
+and the ability to get a user by name. Authorization attributes have been added to API endpoints, 
+and error handling has been improved with token interceptor and alert for unauthorized access. 
+The landing component has been refactored and the authentication guard has been added to the 
+dashboard route for secure access. JWT (JSON Web Token) has been implemented and stored in local storage for 
+authentication purposes. Unused feature calls have been removed, and backend token creation has been added.
+
+
 
 #################
 FunItApp Log2 - Separation of concern
