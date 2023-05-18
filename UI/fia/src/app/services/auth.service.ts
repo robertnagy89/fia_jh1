@@ -36,24 +36,40 @@ export class AuthService {
     return !!localStorage.getItem("token");
   }
 
-  signOut() {
+  signOut() : void {
     localStorage.removeItem("token");
     this.router.navigate(["login"]);
   }
 
-  decodedToken() {
+  decodedToken() : any {
     const jwtHelper = new JwtHelperService();
     const token = this.getToken()!;
     return jwtHelper.decodeToken(token);
   }
 
   getNameFromToken() {
-    if (this.userPayload)
-      return this.userPayload.name;
+    const userPayload = this.getUserPayload();
+    if (userPayload) {
+      return userPayload.unique_name;
+    }
   }
 
   getRoleFromToken() {
-    if (this.userPayload)
-      return this.userPayload.role;
+    const userPayload = this.getUserPayload();
+    if (userPayload) {
+      return userPayload.role;
+    }
+  }
+
+  private getUserPayload() {
+    if (!this.userPayload) {
+      const token = this.getToken();
+      if (!token) {
+        return null;
+      }
+      const jwtHelper = new JwtHelperService();
+      this.userPayload = jwtHelper.decodeToken(token);
+    }
+    return this.userPayload;
   }
 }
