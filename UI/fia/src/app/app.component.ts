@@ -18,11 +18,4 @@ export class AppComponent {
     return this.authService.isLoggedIn();
   }
 
-  // Delay the execution of createChatConnection() until a valid name is provided
-  onLogin(name: string): void {
-    if (name) {
-      this.chatService.myName = name;
-      this.chatService.createChatConnection();
-    }
-  }
 }
