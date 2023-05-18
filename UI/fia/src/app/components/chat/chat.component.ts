@@ -1,5 +1,10 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewContainerRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../../../models/user';
+import { AuthService } from '../../services/auth.service';
 import { ChatService } from '../../services/chat.service';
+import { UserStoreService } from '../../services/user-store.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,24 +16,34 @@ import { ChatService } from '../../services/chat.service';
 export class ChatComponent implements OnInit, OnDestroy {
   @Output() closeChatEmitter = new EventEmitter();
   showChatFlag: boolean = true;
-  hovered = true;
   defaultAvatar: string = '/assets/images/cavia_wizard1.png';
   selectedUser: string = "";
+  name: string = "";
+  role: string = "";
 
-  constructor(public chatService: ChatService, private _viewContainerRef: ViewContainerRef) { }
+  constructor(public chatService: ChatService, private userStore: UserStoreService, private auth: AuthService, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-    this.chatService.createChatConnection();
-  }
 
-  onMouseLeave() {
-    setTimeout(() => {
-      this.hovered = false;
-    }, 1200);
+    this.userStore.getRoleFromStore()
+      .subscribe(val => {
+        const roleFromToken = this.auth.getRoleFromToken();
+        this.role = val || roleFromToken;
+      });
+
+    this.userStore.getNameFromStore()
+      .subscribe(val => {
+      const nameFromToken = this.auth.getNameFromToken(); 
+      this.name = val || nameFromToken;
+
+      if (this.name) {
+        this.chatService.registerUser();
+      }
+    });
   }
 
   ngOnDestroy() {
-    this.chatService.stopChatConnection();
+    this.chatService.removeUserConnectionId();
   }
 
   backToHome() {
