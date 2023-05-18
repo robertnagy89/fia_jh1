@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ChatService } from '../../services/chat.service';
-import { UserResourceService } from '../../services/userresource.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +7,7 @@ import { UserResourceService } from '../../services/userresource.service';
 })
 export class NavbarComponent {
 
-  constructor(private chatService: ChatService, private userResourceService: UserResourceService) { }
+  constructor() { }
 
-  toggleChat(): void {
-    console.log("chat toggled");
-    this.chatService.showChat = !this.chatService.showChat;
-  }
 
-  toggleResource(): void {
-    this.userResourceService.showResources = !this.userResourceService.showResources;
-  }
 }
