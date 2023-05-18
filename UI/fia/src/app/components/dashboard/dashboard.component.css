@@ -1,3 +1,25 @@
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+  .user-table th,
+  .user-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .user-table th {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+
+  .user-table td {
+    background-color: var(--secondary-color);
+    color: #fff;
+  }
+
 button {
   padding: 10px 20px;
   background-color: var(--danger-color);

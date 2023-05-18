@@ -1,38 +1,27 @@
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.title {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: #007bff; /* Update title color */
-}
-
-.resource-container {
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .resource-form {
-  flex: 1;
-  padding: 20px;
-  background-color: #f8f9fa; /* Update form background color */
-  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .form-group-inline {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
 }
 
-label {
+.label {
   display: block;
-  font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -40,65 +29,60 @@ label {
 .form-input {
   width: 100%;
   padding: 8px;
-  font-size: 16px;
   border: none;
-  border-radius: 5px;
-  background-color: #e9ecef; /* Update input background color */
+  border-radius: 4px;
 }
 
 .form-button {
-  padding: 10px 20px;
-  background-color: #007bff; /* Update button background color */
-  color: #fff; /* Update button text color */
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
+  background-color: var(--accent-color);
+  color: var(--text-color);
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  padding: 8px 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out; /* Add transition effect */
-}
-
-.form-group .form-button:hover {
-  background-color: #0056b3; /* Update button background color on hover */
 }
 
 .resource-grid {
-  flex: 1;
-  padding: 20px;
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .resource-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
 .resource-row-details {
-  flex: 1;
-  padding: 10px;
-  background-color: #f8f9fa; /* Update row details background color */
-  border-radius: 5px;
+  flex-grow: 1;
+  padding: 8px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border-radius: 4px;
   cursor: pointer;
 }
 
-  .resource-row-details span {
-    margin-right: 10px;
-  }
+.resource-row-action {
+  margin-left: 10px;
+}
 
 .deleteButton {
-  padding: 5px 10px;
-  background-color: #dc3545; /* Update delete button background color */
-  color: #fff; /* Update delete button text color */
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  border: none;
-  border-radius: 5px;
+  background-color: var(--danger-color);
+  color: var(--text-color);
+  padding: 6px 10px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out; /* Add transition effect */
 }
 
-  .deleteButton:hover {
-    background-color: #c82333; /* Update delete button background color on hover */
+/* Additional Styles for Table-like Structure */
+
+.resource-row-details span {
+  display: inline-block;
+  padding: 2px 6px;
+}
+
+  .resource-row-details span:not(:last-child) {
+    margin-right: 10px;
   }
