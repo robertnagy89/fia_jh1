@@ -30,9 +30,7 @@ export class DashboardComponent implements OnInit{
       .subscribe(val => {
         const roleFromToken = this.auth.getRoleFromToken();
         this.role = val || roleFromToken
-      })
-
-    
+      })    
   }
 
   logOut() {
