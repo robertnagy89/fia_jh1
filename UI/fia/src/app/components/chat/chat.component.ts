@@ -35,11 +35,13 @@ export class ChatComponent implements OnInit, OnDestroy {
       .subscribe(val => {
       const nameFromToken = this.auth.getNameFromToken(); 
       this.name = val || nameFromToken;
+      });
 
-      if (this.name) {
-        this.chatService.registerUser();
-      }
-    });
+    if (this.chatService.onlineUsers && this.chatService.onlineUsers.includes(this.name)) {
+      console.log('User is already registered:', this.name);
+    } else {
+      this.chatService.registerUser();
+    }
   }
 
   ngOnDestroy() {
