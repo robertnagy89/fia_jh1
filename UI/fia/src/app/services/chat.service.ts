@@ -36,7 +36,6 @@ export class ChatService {
     this.userStore.getNameFromStore().subscribe((val) => {
       const myName = this.auth.getNameFromToken();
       this.myName = val || myName;
-      console.log(this.myName);
       if (this.myName) {
         this.userService.getUserByName(this.myName).subscribe((val) => {
           const user: User = {
@@ -45,7 +44,6 @@ export class ChatService {
             email: val.email,
             password: val.password
           };
-          console.log(user);
           return this.httpClient
             .post(`${environment.apiUrl}api/chat/register`, user, { responseType: 'text' })
             .subscribe(() => {
