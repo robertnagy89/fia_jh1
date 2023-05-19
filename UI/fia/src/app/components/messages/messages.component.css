@@ -1,23 +1,19 @@
-/* Messages component */
 .messagesContainer {
-  justify-content:center;
+  justify-content: center;
   flex-direction: column;
 }
-.message{
-    width: 100%;
+
+.message {
+  width: 100%;
 }
 
-.note-card {
+.message-card {
   display: flex;
   margin: 10px;
   border-radius: 8px;
-  background-color:var(--secondary-color);
-  min-width:60%;
-  align-content: center;
-}
-
-.message-wrapper{
+  background-color: var(--secondary-color);
   min-width: 60%;
+  align-content: center;
 }
 
 .message-avatar {
@@ -36,17 +32,24 @@
 
 .message-content {
   display: flex;
-  justify-items: center;
+  justify-items: start;
   color: var(--text-color);
 }
 
 .message-sender {
   font-weight: bold;
+  margin-right: 20px;
+  background-color: var(--primary-color);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
 }
 
 .message-text {
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: var(--primary-color);
+  min-width: 100%;
 }
 
 .message-timestamp {

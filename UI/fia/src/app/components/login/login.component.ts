@@ -64,7 +64,7 @@ import { UserStoreService } from '../../services/user-store.service';
             error: (err) => {
               alert(err?.error.message);
             }
-          })
+          });
       }
     }
   }
