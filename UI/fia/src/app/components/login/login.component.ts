@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   import { AuthService } from '../../services/auth.service';
   import { Router } from '@angular/router';
 import { UserStoreService } from '../../services/user-store.service';
+import { ChatService } from '../../services/chat.service';
 
   @Component({
     selector: 'app-login',
@@ -16,7 +17,7 @@ import { UserStoreService } from '../../services/user-store.service';
     state: string = '*';
 
 
-    constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private userStore: UserStoreService) {
+    constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private userStore: UserStoreService, private chatService: ChatService) {
       this.loginForm = this.formBuilder.group({
         name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
         password: ['', Validators.required]
@@ -53,6 +54,7 @@ import { UserStoreService } from '../../services/user-store.service';
             next: (res) => {
 
               alert(res.message);
+              console.log(res);
               this.loginForm.reset();
               this.authService.storeToken(res.token);
               const tokenPayload = this.authService.decodedToken();
@@ -60,6 +62,7 @@ import { UserStoreService } from '../../services/user-store.service';
               this.userStore.setRoleForStore(tokenPayload.role);
 
               this.router.navigate(['dashboard']);
+              this.chatService.registerUser();
             },
             error: (err) => {
               alert(err?.error.message);
