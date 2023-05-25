@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
+using FIA.Api.Models;
 
 public class User
 {
@@ -21,4 +22,6 @@ public class User
     public string Token { get; set; }
 
     public string Role { get; set; }
+
+    public UserSettings UserSettings { get; set; }
 }

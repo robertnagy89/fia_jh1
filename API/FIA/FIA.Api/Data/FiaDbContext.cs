@@ -13,6 +13,7 @@ namespace FIA.Api.Data
         public DbSet<UserResource> UserResource { get; set; }
 
         public DbSet<User> Users { get;set;}
+        public DbSet<UserSettings> UserSettings { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
