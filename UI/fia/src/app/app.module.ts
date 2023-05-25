@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     PrivateChatWindowComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,
