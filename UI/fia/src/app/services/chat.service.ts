@@ -37,7 +37,7 @@ export class ChatService {
       const myName = this.auth.getNameFromToken();
       this.myName = val || myName;
       if (this.myName) {
-        this.userService.getUserByName(this.myName).subscribe((val) => {
+        this.userService.getMe().subscribe((val) => {
           const user: User = {
             id: val.id,
             name: val.name, // Replace with the appropriate property from val

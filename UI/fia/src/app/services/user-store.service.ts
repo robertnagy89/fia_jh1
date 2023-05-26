@@ -9,6 +9,12 @@ import { User } from '../../models/user';
 export class UserStoreService {
   private name$ = new BehaviorSubject<string>("");
   private role$ = new BehaviorSubject<string>("");
+  private user$ = new BehaviorSubject<User>({
+    name: 'PlaceholderName',
+    email: 'placeholder@example.com',
+    id: '',
+    password: ''
+  });
 
   constructor() { }
 
@@ -26,5 +32,13 @@ export class UserStoreService {
 
   public setNameForStore(name: string) {
     this.name$.next(name);
+  }
+
+  public getMe() {
+    return this.user$.asObservable();
+  }
+
+  public setMe(user: User) {
+    this.user$.next(user);
   }
 }
