@@ -1,0 +1,8 @@
+<div class="chat-container">
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+  <div *ngIf="!isLoading">
+    <div class="response" *ngIf="response">{{ response }}</div>
+    <textarea [(ngModel)]="message" class="input"></textarea>
+    <button (click)="sendMessage(message)" class="button">Send</button>
+  </div>
+</div>
