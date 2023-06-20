@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
+import { ChatGptWindow } from './components/chat-gpt-window/chat-gpt-window.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { UserSettingsComponent } from './components/user-settings/user-settings.
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    ChatGptWindow
   ],
   imports: [
     BrowserModule,
