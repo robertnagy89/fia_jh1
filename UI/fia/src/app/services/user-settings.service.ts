@@ -13,4 +13,9 @@ export class UserSettingsService {
   getUserSettings() {
     return this.http.get<UserSettings>(environment.apiUrl + 'api/user/me');
   }
+
+  saveSettings(settings: UserSettings) {
+    console.log(settings);
+    return this.http.put<UserSettings>('api/user/me', settings);
+  }
 }
