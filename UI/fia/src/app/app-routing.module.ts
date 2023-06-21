@@ -7,6 +7,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 import { UserResourceComponent } from './components/userresource/userresource.component';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
   { path: 'user-resource', component: UserResourceComponent },
   { path: 'navbar', component: NavbarComponent },
-  { path: 'chatgptwindow', component: ChatGptWindow }
+  { path: 'chatgptwindow', component: ChatGptWindow },
+  { path: 'user-settings', component: UserSettingsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
