@@ -22,8 +22,9 @@ Back-end endpoint checking via swagger:
 
 ###Dev Notes
 	EF-Core:
-		Messages are currently kept in memory.
-		Now User entities available through MSSQL.
+		++ Messages are currently kept in memory.
+		++ Now User entities available through MSSQL.
+		++ UserSettings are now available as one-to-one with User entity
 
 	SignalR:
 	
@@ -31,6 +32,77 @@ Back-end endpoint checking via swagger:
 		!! Naming is case sensitive, server side call needs exact match with function name to trigger on client-side.
 		++ Clients are identified by their own browser connection id and sorted on back-end
 		++ Does not result in needless checks to server
+
+	Timings explanation:
+		!! Displayed times are based on average medior developers rough estimates to achieve the end-result.
+		!! Actual times are not displayed (Hint: AI co-pilot speeds up development time exponentially over time)
+
+#################
+FunItApp Log4 - The one with all the Angular magic
+
+Date Task Hours
+2023-05-11 Feat: Add base relations between user and usersettings entities 3
+2023-05-11 Feat: Add UserSettings entity 3
+2023-05-13 Feat: Add user-settings component to dashboard 5
+2023-05-13 Feat: Add usersettings component 5
+2023-05-13 Refactor: Remove User from localstorage 2
+2023-05-13 Feat: Add getUserSettings method 3
+2023-05-13 Feat: Add usersettings model 2
+2023-05-13 Feat: Add GetUserByNameAsync method 3
+2023-05-15 Feat: Add GetMe endpoint 3
+2023-05-15 Fix: Userservice now properly registered in service container 2
+2023-05-17 Feat: Add me: User property to dashboard 2
+2023-05-17 Feat: Add localStorage for currentUser 2
+2023-05-17 Feat: Add chat-gpt-connection 3
+2023-05-17 Fix: Import issues for userresource component 2
+2023-05-17 Feat: Add global style changer buttons 3
+2023-05-17 Fix: Remove chatGptWindow 2
+2023-05-17 Feat: Add main_theme.mp3 asset 2
+2023-05-17 Feat: Add userSettingsServie 3
+2023-05-17 Feat: Add abstraction to color types 2
+2023-05-17 Feat: Add userSettings route 3
+2023-05-17 Feat: Add sql query files for userSettings 2
+2023-05-17 Feat: Add backend logic for userSettings handling 3
+2023-05-17 Feat: Add default userSettings to new Users 2
+2023-05-17 Feat: Add UserSettingsService 3
+2023-05-17 Feat: Add userSettings component 3
+2023-05-17 Feat: Add user-settings service 3
+
+Total 70
+
+Front-end Development:
+Continued development of front-end components and UI enhancements for improved user experience.
+Refactored codebase for better organization and maintainability.
+Implemented authentication and authorization functionality.
+Added user-related components and models.
+Enhanced dashboard functionality and user interface.
+Added global style changer buttons for customization.
+Connected with the chat GPT system.
+Resolved import issues and removed unused components.
+
+Back-end Development:
+Implemented backend logic and SQL query files for userSettings handling.
+Added base relations between user and userSettings entities.
+Implemented GetMe endpoint and GetUserByNameAsync method.
+Registered Userservice properly in the service container.
+
+Other notes:
+Conducted testing of components and resolved identified bugs.
+Prepared documentation of implemented logic and changes made.
+Generated report summarizing work done so far.
+
+Future Work:
+Continue to enhance and optimize the codebase for performance and maintainability.
+Implement additional features and functionality based on project requirements.
+Refine user interface and user experience for better engagement and satisfaction.
+
+In summary, the recent development progress for the FunItApp project focused on various front-end 
+and back-end tasks. Front-end enhancements included the addition of user-related components, 
+dashboard functionality, and UI improvements. Back-end development included the implementation of 
+backend logic, SQL query files, and the registration of the Userservice. Testing, bug fixing, 
+and documentation preparation were also performed. The project has been progressing well, and the 
+Primary Ai developer and the Primary Human developer have been working collaboratively to achieve 
+the desired goals.
 
 
 #################
