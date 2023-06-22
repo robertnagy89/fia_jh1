@@ -17,7 +17,7 @@ Back-end endpoint checking via swagger:
 	2. Launch application, the browser should open to swagger containing our current endpoints.
 
 
-########Currently Working On: login/signup/userentity/validation/authentication
+########Currently Working On: UserSettings repository functionality
 	
 
 ###Dev Notes
