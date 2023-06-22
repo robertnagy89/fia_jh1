@@ -1,6 +1,5 @@
 ﻿using FIA.Api.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Dynamic;
 using System.Threading.Tasks;
 
 namespace FIA.Api.Services
@@ -21,5 +20,5 @@ namespace FIA.Api.Services
         }
 
         
-    }
+            }
 }
