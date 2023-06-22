@@ -4,6 +4,20 @@ using FIA.Api.Models;
 
 public class User
 {
+    public User ()
+	{
+        UserSettings = new UserSettings()
+        {
+            Id = Guid.NewGuid(),
+            PrimaryColor = "#313A43",
+            SecondaryColor = "#74818C",
+            AccentColor = "#A9EEE6",
+            AccentColorHover = "#19F9DF",
+            DangerColor = "#dc3545",
+            TextColor = "#ffffff"
+        };
+	}
+
     [Key]
     public Guid Id { get; set; }
 
