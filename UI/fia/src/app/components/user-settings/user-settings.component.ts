@@ -7,7 +7,7 @@ import { UserSettingsService } from '../../services/user-settings.service';
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.css']
 })
-export class UserSettingsComponent {
+export class UserSettingsComponent implements OnInit{
   userSettings: UserSettings = {
     id: '00000000-0000-0000-0000-000000000000',
     primaryColor: '#313A43',
@@ -18,7 +18,21 @@ export class UserSettingsComponent {
     textColor: '#ffffff'
   }
 
-  constructor(private settings: UserSettingsService) { };
+  constructor(private settings: UserSettingsService) { }
+
+
+  ngOnInit(): void {
+    this.settings.getUserSettings().subscribe(
+      (userSettings: UserSettings) => {
+        console.log(userSettings);
+        this.userSettings = userSettings;
+      },
+      (error) => {
+        console.log('Error retrieving user settings:', error);
+      }
+    );
+  }
+
 
   setColors(name: string) {
     //  :root {
