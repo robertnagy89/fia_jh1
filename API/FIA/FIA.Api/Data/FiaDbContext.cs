@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FIA.Api.Models;
+using System.Threading.Tasks;
+using System;
 
 namespace FIA.Api.Data
 {
@@ -19,6 +21,5 @@ namespace FIA.Api.Data
         {
             // TODO: Add dummy data here
         }
-
     }
 }
