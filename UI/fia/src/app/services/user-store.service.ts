@@ -9,7 +9,13 @@ import { User } from '../../models/user';
 export class UserStoreService {
   private name$ = new BehaviorSubject<string>("");
   private role$ = new BehaviorSubject<string>("");
-  private user$ = new BehaviorSubject<User>({} as User);
+  private user$ = new BehaviorSubject<User>({
+    name: 'PlaceholderName',
+    email: 'placeholder@example.com',
+    id: '',
+    password: ''
+  });
+
   constructor() { }
 
   public getRoleFromStore() {
@@ -28,11 +34,11 @@ export class UserStoreService {
     this.name$.next(name);
   }
 
-  getUser() {
+  public getMe() {
     return this.user$.asObservable();
   }
 
-  setUser(user: User) {
+  public setMe(user: User) {
     this.user$.next(user);
   }
 }

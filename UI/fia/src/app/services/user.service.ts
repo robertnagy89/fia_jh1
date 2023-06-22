@@ -17,4 +17,8 @@ export class UserService {
   getUserByName(name: string) {
     return this.http.get<User>(environment.apiUrl + 'api/user/' + name);
   }
+
+  getMe() {
+    return this.http.get<User>(environment.apiUrl + 'api/user/me')
+  }
 }

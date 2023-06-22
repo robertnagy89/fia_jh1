@@ -4,6 +4,7 @@ using FIA.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FIA.Api.Migrations
 {
     [DbContext(typeof(FiaDbContext))]
-    partial class FiaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230522130737_v4")]
+    partial class v4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,23 +101,9 @@ namespace FIA.Api.Migrations
                     b.Property<string>("Token")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("UserSettingsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserSettingsId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("User", b =>
-                {
-                    b.HasOne("FIA.Api.Models.UserSettings", "UserSettings")
-                        .WithMany()
-                        .HasForeignKey("UserSettingsId");
-
-                    b.Navigation("UserSettings");
                 });
 #pragma warning restore 612, 618
         }

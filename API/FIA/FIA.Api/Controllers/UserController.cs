@@ -1,5 +1,6 @@
 ﻿using Fia.Api.Utilities;
 using FIA.Api.Data;
+using FIA.Api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,9 +20,13 @@ namespace FIA.Api.Controllers
     public class UserController : ControllerBase
     {
         private readonly FiaDbContext _context;
-        public UserController(FiaDbContext context)
+        private readonly UserService _userService;
+
+
+        public UserController(FiaDbContext context, UserService userService)
         {
             _context = context;
+            _userService = userService;
         }
 
         [HttpPost("authenticate")]
@@ -66,18 +71,26 @@ namespace FIA.Api.Controllers
             return Ok(new { Message = "User Registered!" });
         }
 
-        [Authorize]
-        [HttpGet("{name}")]
-        public async Task<ActionResult<User>> GetUserByName(string name)
-        {
-            User user = await _context.Users.FirstOrDefaultAsync(u => u.Name == name);
 
-            if (user == null)
+        [Authorize]
+        [HttpGet("me")]
+        public async Task<ActionResult<User>> GetMe()
+        {
+            var handler = new JwtSecurityTokenHandler();
+            string authHeader = Request.Headers["Authorization"];
+            authHeader = authHeader.Replace("Bearer ", "");
+            var jsonToken = handler.ReadToken(authHeader);
+            var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
+            string name = tokenS.Claims.First(claim => claim.Type == "unique_name").Value;
+
+            User me = await _userService.GetUserByNameAsync(name);
+
+            if (me == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(me);
         }
 
         [Authorize]
@@ -127,6 +140,22 @@ namespace FIA.Api.Controllers
 
             var token = jwtHandler.CreateToken(tokenDescriptor);
             return jwtHandler.WriteToken(token);
+        }
+
+        private string GetName(string token)
+        {
+            string secret = "veryverysecret.....";
+            var key = Encoding.ASCII.GetBytes(secret);
+            var handler = new JwtSecurityTokenHandler();
+            var validations = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false,
+                ValidateAudience = false
+            };
+            var claims = handler.ValidateToken(token, validations, out var tokenSecure);
+            return claims.Identity.Name;
         }
     }
 }

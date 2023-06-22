@@ -18,6 +18,8 @@ import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
+import { ChatGptWindow } from './components/chat-gpt-window/chat-gpt-window.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     PrivateChatWindowComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserSettingsComponent,
+    ChatGptWindow
   ],
   imports: [
     BrowserModule,

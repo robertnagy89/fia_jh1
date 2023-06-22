@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { UserResource } from '../../../models/userresource.model';
 import { UserResourceService } from '../../services/userresource.service';
+
 
 @Component({
   selector: 'app-userresource',
   templateUrl: './userresource.component.html',
   styleUrls: ['./userresource.component.css']
 })
+
+
 export class UserResourceComponent implements OnInit {
   title = 'userresource';
   userresources: UserResource[] = [];
